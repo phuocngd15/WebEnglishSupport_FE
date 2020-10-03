@@ -25,7 +25,7 @@ import {
   NavbarText
 } from 'reactstrap';
 import ByWord from './LearnVocabulary/ByWord';
-import ByStories from './LearnVocabulary/ByStories';
+import ByStories from './LearnVocabulary/ByStories/ByStories';
 const h = window.innerHeight;
 
 const Layout = () => {
@@ -65,8 +65,8 @@ const Layout = () => {
                 <NavLink href="https://github.com/phuocngd15/WebSupportLearningEnglish">GitHub's Project</NavLink>
               </NavItem>
             </Nav>
-            <NavLink href='/login'>Sign In</NavLink>
-            <NavLink href='/regrister'>Sign Up</NavLink>
+            <Authentication />
+            <NavLink href='/logout'>Sign out</NavLink>
           </Collapse>
         </Navbar>
         <div className='main'>
@@ -74,7 +74,6 @@ const Layout = () => {
           <Route path="/Home" component={ByWord} />
           <Route path="/Cards" component={ByWord} />
           <Route path="/Stories" component={ByStories} />
-          <Route path="/login" component={Authentication} />
         </div>
       </Router>
     </div>
