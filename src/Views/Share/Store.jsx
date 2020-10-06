@@ -2,9 +2,9 @@ import React from "react";
 import { render } from "react-dom";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import App from "./components/App";
-import rootReducer from "./reducers";
+import AuthenticationReducer from "../Authentication/AuthenticationSlice";
 
 const store = configureStore({
-    reducer: rootReducer,
+    reducer: AuthenticationReducer,
 });
+export default store

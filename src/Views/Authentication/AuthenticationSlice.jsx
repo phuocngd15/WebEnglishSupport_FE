@@ -1,9 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { axiosGet } from '../Share/Service'
 
 const fetchUserById = createAsyncThunk(
     'users/fetchByIdStatus',
     async (userId, thunkAPI) => {
-        const response = await userAPI.fetchById(userId)
+        const response = await axiosGet(userId);
         return response.data
     }
 )
@@ -29,9 +30,6 @@ const postsSlice = createSlice({
     }
 })
 
-// Extract the action creators object and the reducer
-const { actions, reducer } = postsSlice
-// Extract and export each action creator by name
-export const { createPost, updatePost, deletePost } = actions
+export const { createPost, updatePost, deletePost } = postsSlice.actions
 // Export the reducer, either as a default or named export
-export default reducer
+export default postsSlice.reducer
