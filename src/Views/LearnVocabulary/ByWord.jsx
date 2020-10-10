@@ -1,14 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import WordCard from '../../Comopents/Card/WordCard'
-
+import React from 'react';
+import PropTypes from 'prop-types';
+import WordCard from '../../Comopents/Card/WordCard';
 
 const ByWord = ({ isStory }) => {
-    return (
-        <WordCard />
-    )
-}
+  return <WordCard />;
+};
 ByWord.propTypes = {
-    prop: PropTypes
-}
-export default ByWord
+  prop: PropTypes
+};
+export default ByWord;
