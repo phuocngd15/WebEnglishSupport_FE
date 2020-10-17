@@ -30,14 +30,20 @@ const Navs = React.lazy(() => import('../components/base/navs/Navs'))
 const Paginations = React.lazy(() =>
   import('../components/base/paginations/Pagnations')
 )
-const Popovers = React.lazy(() => import('../components/base/popovers/Popovers'))
+const Popovers = React.lazy(() =>
+  import('../components/base/popovers/Popovers')
+)
 const ProgressBar = React.lazy(() =>
   import('../components/base/progress-bar/ProgressBar')
 )
-const Switches = React.lazy(() => import('../components/base/switches/Switches'))
+const Switches = React.lazy(() =>
+  import('../components/base/switches/Switches')
+)
 
 const Tabs = React.lazy(() => import('../components/base/tabs/Tabs'))
-const Tooltips = React.lazy(() => import('../components/base/tooltips/Tooltips'))
+const Tooltips = React.lazy(() =>
+  import('../components/base/tooltips/Tooltips')
+)
 const BrandButtons = React.lazy(() =>
   import('../components/buttons/brand-buttons/BrandButtons')
 )
@@ -47,7 +53,9 @@ const ButtonDropdowns = React.lazy(() =>
 const ButtonGroups = React.lazy(() =>
   import('../components/buttons/button-groups/ButtonGroups')
 )
-const Buttons = React.lazy(() => import('../components/buttons/buttons/Buttons'))
+const Buttons = React.lazy(() =>
+  import('../components/buttons/buttons/Buttons')
+)
 const Charts = React.lazy(() => import('../components/charts/Charts'))
 const Dashboard = React.lazy(() => import('../components/dashboard/Dashboard'))
 const CoreUIIcons = React.lazy(() =>
@@ -71,10 +79,14 @@ const Typography = React.lazy(() =>
 const Widgets = React.lazy(() => import('../components/widgets/Widgets'))
 const Users = React.lazy(() => import('../components/users/Users'))
 const User = React.lazy(() => import('../components/users/User'))
+const PracticeToeic = React.lazy(() =>
+  import('../components/toeicTest/PracticeToeic')
+)
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+  { path: '/toeicTest', name: 'Practice Toeic Test', component: PracticeToeic },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },

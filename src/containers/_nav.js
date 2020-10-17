@@ -11,6 +11,11 @@ export default [
     }
   },
   {
+    _tag: 'CSidebarNavItem',
+    name: 'Practice Toeic Test',
+    to: '/toeicTest'
+  },
+  {
     _tag: 'CSidebarNavTitle',
     _children: ['Theme']
   },
