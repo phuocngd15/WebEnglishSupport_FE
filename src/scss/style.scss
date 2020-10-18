@@ -6,3 +6,49 @@
 
 // If you want to add something do it here
 @import "custom";
+
+* {
+    margin:0;
+    padding:0;
+}
+body{
+    font-family: "Roboto", sans-serif;
+font-size:14px;
+font-weight: 400;
+line-height:20px;
+}
+.testfullwrap{
+    display:flex;
+}
+.testfullonetwo{
+    color: #003471;
+    display: block;
+}
+.testfullwrap_one{
+font-weight: 700;
+text-align: right;
+margin-right:20px;
+padding-right:20px;
+border-right:4px solid; 
+color:$primary-color;
+}
+
+.testfull-one{
+    font-size:30px;
+}
+
+.testfullwrap_two{
+    text-align: left;
+}
+.testfull-two{
+    font-size: 20px;
+    margin-top:10px;
+}
+.rowtoeic-exam{
+    text-align: center;
+    border: 2px solid red;
+    border-radius: 25px;
+}
+
+
+
