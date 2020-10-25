@@ -23,6 +23,11 @@ export default [
       },
       {
         _tag:'CSidebarNavItem',
+        name:'One Page Test Full',
+        to:'/toeictest/pagetestfull'
+      },
+      {
+        _tag:'CSidebarNavItem',
         name:'Listening test',
         to:'/toeictest/listeningtest'
       },

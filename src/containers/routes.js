@@ -88,6 +88,9 @@ const User = React.lazy(() => import('../components/users/User'))
 const FullTest = React.lazy(() =>
   import('../components/toeic/fulltest/FullTest')
 )
+const PageTestFull = React.lazy(() =>
+  import('../components/toeic/fulltest/PageTestFull')
+)
 const ListeningTest = React.lazy(() =>
   import('../components/toeic/listeningtest/ListeningTest')
 )
@@ -100,6 +103,7 @@ const routes = [
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/toeictest', name: 'Practice Toeic Test', component: ReadingTest, exact:true },
   { path: '/toeictest/fulltest', name: 'Full Toeic Test', component: FullTest },
+  { path: '/toeictest/pagetestfull', name: 'Page Test Full', component: PageTestFull },
   { path: '/toeictest/listeningtest', name: 'Listening Test', component: ListeningTest },
   { path: '/toeictest/readingtest', name: 'Reading Test', component: ReadingTest },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
