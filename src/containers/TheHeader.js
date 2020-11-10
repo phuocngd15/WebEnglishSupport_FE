@@ -15,6 +15,7 @@ import CIcon from '@coreui/icons-react'
 
 // routes config
 import routes from './routes'
+import '../../src/scss/style.scss'
 
 import {
   TheHeaderDropdown,
@@ -59,16 +60,26 @@ const TheHeader = () => {
         <CIcon name="logo" height="48" alt="Logo" />
       </CHeaderBrand>
 
-      <CHeaderNav className="d-md-down-none mr-auto">
+      <CHeaderNav className="d-md-down-none mr-auto header">
+        <a class="navbar-brand logo" href="#">
+          <img
+            src="image/logo.png"
+            width="70"
+            height="70"
+            alt=""
+            loading="lazy"
+          />
+        </a>
         <CHeaderNavItem className="px-3">
-          <CHeaderNavLink to="/dashboard">Dashboard</CHeaderNavLink>
+          <CHeaderNavLink to="/#">Đề thi thử</CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem className="px-3">
-          <CHeaderNavLink to="/users">Users</CHeaderNavLink>
+          <CHeaderNavLink to="/#">Cách tính điểm TOEIC</CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem className="px-3">
-          <CHeaderNavLink>Settings</CHeaderNavLink>
+          <CHeaderNavLink to="/#">Tài liệu tham khảo</CHeaderNavLink>
         </CHeaderNavItem>
+       
       </CHeaderNav>
 
       <CHeaderNav className="px-3">
