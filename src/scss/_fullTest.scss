@@ -1,0 +1,38 @@
+.fullTest-page {
+  background-color: white;
+
+  .fullTest-header {
+    .fullTest-image {
+      width: 100%;
+    }
+    .fullTest-header-subject {
+      font-size: 5rem;
+      font-weight: 700;
+      line-height: 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+  .fullTest-exams {
+    .fullTest-exams-title {
+      color: #fa9f42;
+      font-size: 1.5rem;
+    }
+    .fullTest-exams-list {
+      .fullTest-exams-list-child {
+        text-align: center;
+
+        ul {
+          list-style-type: none;
+          a {
+            color: #5acfc9;
+            font-weight: 600;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}

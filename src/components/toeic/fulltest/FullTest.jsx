@@ -18,99 +18,99 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
-import routes from '../../../containers/routes'
-import '../../../scss/style.scss'
+
 const slides = [1, 2, 3, 4, 5, 6]
 
 const FullTest = () => {
   return (
-    <CContainer className="body">
-      <CContainer className="advertisement bg-primary mx-auto">
+    <CContainer className="fullTest-page">
+      <CContainer className="fullTest-header">
         <CRow>
-          <CCol md lg="7" className="ads">
-            THI THỬ TOEIC <br />
-            ĐỀ THI THẬT 2020
+          <CCol md lg="7" className="fullTest-header-subject">
+            <div>THI THỬ TOEIC</div>
+            <div>ĐỀ THI THẬT 2020</div>
           </CCol>
           <CCol md lg="5" >
-            <img 
-              thumbnail
+            <img
+
               src="image/Capture.JPG"
               alt="advertise 1"
               loading="lazy"
               align="left"
+              className='fullTest-image'
             />
           </CCol>
         </CRow>
       </CContainer>
-      <CContainer className="fulltest">
-        <h2>
-          Full Test - Thi thử đề thật{' '}
-          <CIcon name="cil-bell" className="mfe-2" /> Thời lượng: 120 phút
-        </h2>
-        <CRow>
-          <CCol lg="4">
+      <CContainer className="fullTest-exams">
+        <div className='fullTest-exams-title'>
+          Danh sách đề thi:
+          (120 phút iconThemSau)
+        </div>
+        <CRow className='fullTest-exams-list'>
+          <CCol lg="4" className='fullTest-exams-list-child'>
             <ul>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 10</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 10</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 8</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 8</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 6</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 6</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 4</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 4</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 1</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 1</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 3</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 3</a>
               </li>
             </ul>
           </CCol>
-          <CCol lg="4">
+          <CCol lg="4" className='fullTest-exams-list-child'>
             <ul>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 10</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 10</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 10</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 10</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 10</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 10</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 10</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 10</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 10</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 10</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 10</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 10</a>
               </li>
             </ul>
           </CCol>
-          <CCol lg="4">
+          <CCol lg="4" className='fullTest-exams-list-child'>
             <ul>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 10</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 10</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 10</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 10</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 10</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 10</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 10</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 10</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 10</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 10</a>
               </li>
               <li>
-                <a href="#">&gt; Thi thử TOEIC 2020 - Đề 10</a>
+                <a href="#">Thi thử TOEIC 2020 - Đề 10</a>
               </li>
             </ul>
           </CCol>

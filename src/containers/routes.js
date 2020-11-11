@@ -1,8 +1,4 @@
 import React from 'react'
-// import FullTest from '../components/toeic/fulltest/FullTest'
-// import ListeningTest from '../components/toeic/listeningtest/ListeningTest'
-// import ReadingTest from '../components/toeic/readingtest/ReadingTest'
-
 const Toaster = React.lazy(() =>
   import('../components/notifications/toaster/Toaster')
 )
