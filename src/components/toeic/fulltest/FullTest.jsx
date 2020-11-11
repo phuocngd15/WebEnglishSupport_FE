@@ -27,12 +27,12 @@ const FullTest = () => {
     <CContainer className="body">
       <CContainer className="advertisement bg-primary mx-auto">
         <CRow>
-          <CCol lg="7" className="ads">
+          <CCol md lg="7" className="ads">
             THI THỬ TOEIC <br />
             ĐỀ THI THẬT 2020
           </CCol>
-          <CCol lg="5">
-            <img
+          <CCol md lg="5" >
+            <img 
               thumbnail
               src="image/Capture.JPG"
               alt="advertise 1"
