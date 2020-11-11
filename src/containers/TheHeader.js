@@ -71,7 +71,7 @@ const TheHeader = () => {
           />
         </a>
         <CHeaderNavItem className="px-3">
-          <CHeaderNavLink to="/#">Đề thi thử</CHeaderNavLink>
+          <CHeaderNavLink to="/dashboard">Đề thi thử</CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem className="px-3">
           <CHeaderNavLink to="/#">Cách tính điểm TOEIC</CHeaderNavLink>
