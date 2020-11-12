@@ -24,25 +24,22 @@
       width: 380px;
 
       .button {
-        display: inline-flex;
-        height: 40px;
-        width: 150px;
+        display: flex;
+        height: 3rem;
+        width: 8rem;
+        border: none;
         border-radius: 25px;
-        margin: 20px 20px 20px 20px;
         color: $base-red;
         background: #ffffff;
-        opacity: 0.9;
         text-decoration: none;
-        font-weight: bolder;
+        font-weight: 700;
         font-size: 1.2rem;
-        letter-spacing: 1.5px;
+        letter-spacing: 0.1rem;
         align-items: center;
         justify-content: center;
         overflow: hidden;
-        &:hover {
-          color: #ffffff;
-          opacity: 1;
-        }
+        box-shadow: rgba(0, 0, 0, 0.507) 0px 3px 8px;
+        transition: all 0.3s ease-Out;
       }
       #button-2,
       #button-1 {
@@ -52,24 +49,27 @@
         #slide {
           width: 100%;
           height: 100%;
-          left: -200px;
+          left: -150px;
           background: $base-red;
           position: absolute;
-          transition: all 0.2s ease-Out;
+          transition: all 0.1s ease-Out;
           bottom: 0;
         }
         div {
           position: relative;
-          transition: all 0.2s ease-Out;
+          transition: all 0.3s ease-Out;
         }
-        &:hover #slide {
-          left: 0;
-        }
-        &:hover div {
-          font-size: 1.5rem;
-          font-weight: bolder;
-          color: #ffffff;
-          opacity: 1;
+
+        &:hover {
+          width: 10rem;
+          #slide {
+            left: 0;
+          }
+          div {
+            font-size: 1.5rem;
+            font-weight: bolder;
+            color: #ffffff;
+          }
         }
       }
     }
