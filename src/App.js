@@ -13,6 +13,7 @@ const TheLayout = React.lazy(() => import('./containers/TheLayout'))
 
 // Pages
 const Login = React.lazy(() => import('./views/pages/login/Login'))
+const PageIntro = React.lazy(() => import('./views/pages/introduction/IntroductionPage'))
 const Register = React.lazy(() => import('./views/pages/register/Register'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
@@ -24,9 +25,8 @@ const App = () => {
     <HashRouter>
       <React.Suspense fallback={loading}>
         <Switch>
-          <Route exact path="/login" name="Login Page">
-            <Login />
-          {/*   {!isloggedIn ? <Login /> : <Redirect to="/" />} */}
+          <Route exact path="/intro" name="Introduction Page">
+            {!isloggedIn ? <PageIntro /> : <Redirect to="/" />}
           </Route>
           <Route exact path="/register" name="Register Page">
             <Register />
@@ -38,8 +38,7 @@ const App = () => {
             <Page500 />
           </Route>
           <Route path="/" name="Home">
-  {/*           {isloggedIn ? <TheLayout /> : <Redirect to="/login" />} */}
-            <TheLayout />
+            {isloggedIn ? <TheLayout /> : <Redirect to="/intro" />}
           </Route>
         </Switch>
       </React.Suspense>
