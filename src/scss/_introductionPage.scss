@@ -9,13 +9,15 @@
     margin: 0;
     position: absolute;
     top: 25%;
-    left: 52%;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    left: 55%;
+    font-family: 'Oleo Script', 'Comic Sans MS', 'Comic Sans', cursive;
+
     .introduction-page-header {
-      width: 100%;
       color: $base-red;
-      padding: 10px;
-      text-align: center;
+      line-height: none;
+      text-align: right;
+      text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
     }
     .introduction-page-footer {
       display: flex;
@@ -55,11 +57,16 @@
           transition: all 0.2s ease-Out;
           bottom: 0;
         }
+
         div {
           position: relative;
           transition: all 0.4s ease-Out;
         }
-
+        svg {
+          position: relative;
+          transition: all 0.4s ease-Out;
+          margin-left: 5px;
+        }
         &:hover {
           width: 10rem;
           background: $base-red;
@@ -69,6 +76,11 @@
           div {
             font-size: 1.5rem;
             font-weight: bolder;
+            color: #ffffff;
+          }
+          svg {
+            width: 28px;
+            height: 28px;
             color: #ffffff;
           }
         }
