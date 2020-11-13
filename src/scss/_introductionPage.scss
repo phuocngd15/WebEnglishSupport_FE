@@ -1,15 +1,14 @@
 .introduction-page-container {
   /*  background-size: 100% 100%;
   background-image: url('../assets/page/introduction.jpg'); */
-  background: url(images/intro2.jpg) no-repeat center center fixed;
+  background: url(images/intro4.jpg) no-repeat center center fixed;
   background-size: cover;
   height: 100%;
   overflow: hidden;
   .introduction-page-modal {
     margin: 0;
     position: absolute;
-    top: 25%;
-    left: 55%;
+    left: 38%;
     font-family: 'Oleo Script', 'Comic Sans MS', 'Comic Sans', cursive;
 
     .introduction-page-header {
@@ -91,34 +90,34 @@
 
 @media only screen and (max-width: 767px) {
   .introduction-page-header {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 700;
   }
 }
 
 @media only screen and (min-width: 768px) {
   .introduction-page-header {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 700;
   }
 }
 
 @media only screen and (min-width: 1280px) {
   .introduction-page-header {
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: 700;
   }
 }
 @media only screen and (min-width: 1920px) {
   .introduction-page-header {
-    font-size: 4rem;
+    font-size: 6rem;
     font-weight: 700;
   }
 }
 
 @media only screen and (min-width: 2560px) {
   .introduction-page-header {
-    font-size: 6rem;
+    font-size: 7rem;
     font-weight: 700;
   }
 }

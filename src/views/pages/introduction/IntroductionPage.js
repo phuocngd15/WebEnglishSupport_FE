@@ -12,6 +12,7 @@ const IntroductionPage = () => {
   }
   return (
     <div className="c-app c-default-layout flex-row align-items-center introduction-page-container">
+
       <div className='introduction-page-modal'>
         <div className='introduction-page-header'>
           <div>Toeic test </div>
@@ -20,12 +21,12 @@ const IntroductionPage = () => {
         <div className='introduction-page-footer'>
           <div class="button" id="button-1">
             <div id="slide"></div>
-            <div onClick={handleLogin}>Login</div>
-            <LoginIcon />
+            <div onClick={handleRegister}>Register</div>
           </div>
           <div class="button" id="button-2">
             <div id="slide"></div>
-            <div onClick={handleRegister}>Register</div>
+            <div onClick={handleLogin}>Login</div>
+            <LoginIcon />
           </div>
         </div>
       </div>
