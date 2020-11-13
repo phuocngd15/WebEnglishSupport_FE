@@ -19,7 +19,7 @@ const IntroductionPage = () => {
     <div className="c-app c-default-layout flex-row align-items-center introduction-page-container">
       <div className='introduction-page-modal'>
         <div className='introduction-page-header'>
-          <div>Learn english so easy!</div>
+          <div>Toeic so easy!</div>
         </div>
         <div className='introduction-page-footer'>
           {/* <button class="btn draw-border">Đăng nhập</button>

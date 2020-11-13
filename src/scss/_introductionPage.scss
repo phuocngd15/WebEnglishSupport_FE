@@ -1,32 +1,34 @@
 .introduction-page-container {
-  background-size: 100% 100%;
-  background-image: url('../assets/page/introduction.jpg');
+  /*  background-size: 100% 100%;
+  background-image: url('../assets/page/introduction.jpg'); */
+  background: url(images/intro2.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
   .introduction-page-modal {
     margin: 0;
     position: absolute;
     top: 25%;
-    left: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-
+    left: 52%;
+    /* -ms-transform: translateY(-50%);
+    transform: translateY(-50%); */
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
     .introduction-page-header {
       width: 100%;
       color: $base-red;
-      font-size: 3rem;
-      font-weight: 700;
       padding: 10px;
       text-align: center;
     }
     .introduction-page-footer {
       display: flex;
-      flex-direction: row;
       justify-content: space-around;
-      width: 380px;
+      flex-wrap: wrap;
 
       .button {
         display: flex;
         height: 3rem;
         width: 8rem;
+        margin: 8px;
         border: none;
         border-radius: 25px;
         color: $base-red;
@@ -39,7 +41,7 @@
         justify-content: center;
         overflow: hidden;
         box-shadow: rgba(0, 0, 0, 0.507) 0px 3px 8px;
-        transition: all 0.3s ease-Out;
+        transition: all 0.5s ease-Out;
       }
       #button-2,
       #button-1 {
@@ -52,16 +54,17 @@
           left: -150px;
           background: $base-red;
           position: absolute;
-          transition: all 0.1s ease-Out;
+          transition: all 0.2s ease-Out;
           bottom: 0;
         }
         div {
           position: relative;
-          transition: all 0.3s ease-Out;
+          transition: all 0.4s ease-Out;
         }
 
         &:hover {
           width: 10rem;
+          background: $base-red;
           #slide {
             left: 0;
           }
@@ -73,5 +76,39 @@
         }
       }
     }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .introduction-page-header {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .introduction-page-header {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .introduction-page-header {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .introduction-page-header {
+    font-size: 4rem;
+    font-weight: 700;
+  }
+}
+
+@media only screen and (min-width: 2560px) {
+  .introduction-page-header {
+    font-size: 6rem;
+    font-weight: 700;
   }
 }
