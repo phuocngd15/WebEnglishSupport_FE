@@ -10,8 +10,6 @@
     position: absolute;
     top: 25%;
     left: 52%;
-    /* -ms-transform: translateY(-50%);
-    transform: translateY(-50%); */
     font-family: 'Comic Sans MS', 'Comic Sans', cursive;
     .introduction-page-header {
       width: 100%;
@@ -21,7 +19,7 @@
     }
     .introduction-page-footer {
       display: flex;
-      justify-content: space-around;
+      justify-content: end;
       flex-wrap: wrap;
 
       .button {
