@@ -32,7 +32,6 @@ const FullTest = () => {
           </CCol>
           <CCol md lg="5" >
             <img
-
               src="image/Capture.JPG"
               alt="advertise 1"
               loading="lazy"
