@@ -8,20 +8,20 @@ $max-width: 1100px;
 
 // Set text color based on background
 @function set-text-color($color) {
-    @if (lightness($color) > 60) {
-      @return #333;
-    } @else {
-      @return #fff;
-    }
+  @if (lightness($color) > 60) {
+    @return #333;
+  } @else {
+    @return #fff;
   }
-  
-  // Set background & text color
-  @mixin set-background($color) {
-    background-color: $color;
-    color: set-text-color($color);
-  }
+}
 
-  $spaceamounts: (1, 2, 3, 4, 5);
+// Set background & text color
+@mixin set-background($color) {
+  background-color: $color;
+  color: set-text-color($color);
+}
+
+$spaceamounts: (1, 2, 3, 4, 5);
 
 @each $space in $spaceamounts {
   // All around margin
@@ -45,14 +45,11 @@ $max-width: 1100px;
   }
 }
 
-.c-body{
+.c-body {
   background-color: white;
 }
-#modified-header{
-  background-color: pink;
-  box-shadow: rgba(0, 0, 0, 0.507) 0px 3px 8px;
-  
+#modified-header {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 10px;
 }
-#modified-subheader{
-
-} 
+#modified-subheader {
+}
