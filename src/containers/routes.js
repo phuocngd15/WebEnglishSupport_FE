@@ -97,7 +97,7 @@ const QuizIntro = React.lazy(()=>
 import('../components/toeic/fulltest/QuizIntro')
 )
 const routes = [
-  { path: '/', exact: true, name: 'Home' },
+  { path: '/', exact: true, name: 'Home', component:FullTest },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/toeictest', name: 'Practice Toeic Test', component: ReadingTest, exact:true },
   { path: '/toeictest/fulltest', name: 'Full Toeic Test', component: FullTest },
