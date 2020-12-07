@@ -45,7 +45,7 @@ const TheHeader = () => {
   }
 
   return (
-    <CHeader withSubheader id='modified-header'>
+    <CHeader withSubheader id='modified-header' className='container-fluid'>
       {/*  <CToggler
         inHeader
         className="ml-md-3 d-lg-none"
@@ -65,10 +65,11 @@ const TheHeader = () => {
         <a class="navbar-brand logo" href="#">
           <img
             src="image/logo.png"
-            width="70"
-            height="70"
+            width="50"
+            height="50"
             alt=""
             loading="lazy"
+            className="ml-2"
           />
         </a>
         <CHeaderNavItem className="px-3">

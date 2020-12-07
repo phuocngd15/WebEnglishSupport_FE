@@ -17,6 +17,8 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { signinRequest } from '../../../Store/slice/authenticationSlice'
+import { getExamRequest } from '../../../Store/slice/examSlide'
+
 import useEncrypt from '../../../components/hook/useEncrypt'
 
 const Login = () => {
@@ -28,15 +30,22 @@ const Login = () => {
 
   const handelLogin = e => {
     e.preventDefault()
-    const usernameEncrypted = mahoa(usernameRef.current.value)
-    const passEncrypted = mahoa(passRef.current.value)
+    // truc
+    // const usernameEncrypted = mahoa(usernameRef.current.value)
+    // const passEncrypted = mahoa(passRef.current.value)
+    const usernameEncrypted = mahoa('truc@gmail.com')
+    const passEncrypted = mahoa('123456')
 
-    const filterModel = {
+    let filterModel = {
       email: usernameEncrypted,
       password: passEncrypted,
       url: 'http://localhost:9999/signin'
     }
     dispatch(signinRequest(filterModel))
+    filterModel = {
+      url: 'http://localhost:9999/api/fullexam/'
+    }
+      dispatch(getExamRequest(filterModel))
   }
   if (isloggedIn) return <Redirect to="/" />
 
@@ -61,7 +70,8 @@ const Login = () => {
                         </CInputGroupPrepend>
                         <input
                           type="text"
-                          ref={usernameRef}
+                          // ref={usernameRef}
+                          value="truc@gmail.com"
                           placeholder="Username"
                           autoComplete="username"
                         />
@@ -74,7 +84,8 @@ const Login = () => {
                         </CInputGroupPrepend>
                         <input
                           type="password"
-                          ref={passRef}
+                          // ref={passRef}
+                          value="123456"
                           placeholder="Password"
                           autoComplete="current-password"
                         />

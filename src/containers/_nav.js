@@ -11,35 +11,6 @@ export default [
     }
   },
   {
-    _tag: 'CSidebarNavDropdown',
-    name: 'Practice Toeic Test',
-    route: '/toeictest',
-    icon: 'cli-puzzle',
-    _children: [
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Full toeic test',
-        to: '/toeictest/fulltest'
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'One Page Test Full',
-        to: '/toeictest/pagetestfull'
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Listening test',
-        to: '/toeictest/listeningtest'
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Reading test',
-        to: '/toeictest/readingtest'
-      },
-
-    ]
-  },
-  {
     _tag: 'CSidebarNavTitle',
     _children: ['Theme']
   },

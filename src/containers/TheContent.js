@@ -15,7 +15,6 @@ const TheContent = () => {
   return (
     <main className="c-main">
       <CContainer fluid>
-        <div>
           <Suspense fallback={loading}>
             <Switch>
               {routes.map((route, idx) => {
@@ -38,7 +37,6 @@ const TheContent = () => {
               <Redirect from="/" to="/home" />
             </Switch>
           </Suspense>
-        </div >
       </CContainer>
     </main>
   )

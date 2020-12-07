@@ -1,4 +1,9 @@
 import React from 'react'
+
+const intro = React.lazy(()=>
+import ('../components/settings/fullexam/ListExam')
+)
+
 const Toaster = React.lazy(() =>
   import('../components/notifications/toaster/Toaster')
 )
@@ -78,33 +83,10 @@ const Typography = React.lazy(() =>
 const Widgets = React.lazy(() => import('../components/widgets/Widgets'))
 const Users = React.lazy(() => import('../components/users/Users'))
 const User = React.lazy(() => import('../components/users/User'))
-// const PracticeToeic = React.lazy(() =>
-//   import('../components/toeic/PracticeToeic')
-// )
-const FullTest = React.lazy(() =>
-  import('../components/toeic/fulltest/FullTest')
-)
-const PageTestFull = React.lazy(() =>
-  import('../components/toeic/fulltest/PageTestFull')
-)
-const ListeningTest = React.lazy(() =>
-  import('../components/toeic/listeningtest/ListeningTest')
-)
-const ReadingTest = React.lazy(() =>
-  import('../components/toeic/readingtest/ReadingTest')
-)
-const QuizIntro = React.lazy(()=>
-import('../components/toeic/fulltest/QuizIntro')
-)
+
 const routes = [
-  { path: '/', exact: true, name: 'Home', component:FullTest },
+  { path: '/', name: 'Home', component: intro },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
-  { path: '/toeictest', name: 'Practice Toeic Test', component: ReadingTest, exact:true },
-  { path: '/toeictest/fulltest', name: 'Full Toeic Test', component: FullTest },
-  { path: '/toeictest/quizintro', name: 'Quiz intro', component: QuizIntro },
-  { path: '/toeictest/pagetestfull', name: 'Page Test Full', component: PageTestFull },
-  { path: '/toeictest/listeningtest', name: 'Listening Test', component: ListeningTest },
-  { path: '/toeictest/readingtest', name: 'Reading Test', component: ReadingTest },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },

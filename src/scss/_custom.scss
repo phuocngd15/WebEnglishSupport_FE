@@ -53,3 +53,12 @@ $spaceamounts: (1, 2, 3, 4, 5);
 }
 #modified-subheader {
 }
+* {
+  box-sizing: border-box;
+}
+.c-main,
+.footer,
+#modified-header {
+  padding: 0 250px;
+}
+

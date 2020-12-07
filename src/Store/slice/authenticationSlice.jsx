@@ -24,8 +24,9 @@ const authenticationSlice = createSlice({
   name: 'authentication',
   initialState: {
     accountAtLocalStore: getStateLogin(),
-    loginState: null,
-    isloggedIn: false
+    loginState: {},
+    isloggedIn: false,
+    loading: false
   },
   reducers: {
     login: (state, action) => {
