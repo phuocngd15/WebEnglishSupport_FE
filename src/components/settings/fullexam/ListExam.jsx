@@ -1,28 +1,32 @@
-import React, { Fragment } from 'react'
-import { CCol, CRow, CContainer } from '@coreui/react'
+import React, { Fragment, useEffect, useState } from 'react'
+import { CCol, CRow, CContainer, CLink } from '@coreui/react'
 import { mdiClockAlertOutline } from '@mdi/js'
 import Icon from '@mdi/react'
+import { getExamRequest, getExamsRequest } from '../../../Store/slice/examSlide'
+import { Link, Redirect } from 'react-router-dom'
+import startQuiz from '../startQuiz'
 import Exam from './Exam'
-import { getExamRequest } from '../../../Store/slice/examSlide'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Exams = () => {
-  const loading = useSelector(state => state.authentication).loading
-
+  const { isloggedIn } = useSelector(state => state.authentication)
+  const [isLogin, setIsLogin] = useState(isloggedIn)
   const exams = useSelector(state => state.exam).exams
   const dispatch = useDispatch()
   const filterModel = {
     url: 'http://localhost:9999/api/fullexam/'
   }
-  if (loading) {
-    dispatch(getExamRequest(filterModel))
-  }
+  useEffect(() => {
+    if (isLogin) {
+      dispatch(getExamsRequest(filterModel))
+    }
+  }, [isLogin])
   return (
     <Fragment>
       <div className="fullTest-page">
-        <div className="fullTest-header">
+        <div className="fullTest-header ">
           <CRow>
-            <CCol md lg="7" className="fullTest-header-subject">
+            <CCol lg="7" className="fullTest-header-subject">
               <div>Thi thử TOEIC</div>
               <div>Đề thi thật 2020</div>
             </CCol>
@@ -77,17 +81,13 @@ const Exams = () => {
               Thời lượng: 30 phút{' '}
             </span>
           </div>
-          {/* <CRow className="fullTest-exams-list">
-          <CCol lg="4" className="fullTest-exams-list-child">
-            {exam.map(sample => (
-              <Exam sample={sample} />
-            ))}
-          </CCol>
-        </CRow> */}
-          <div className="fullTest-exams-title">
-            Cách tính điểm bài thi TOEIC
-            <span className="fullTest-exams-title-child"></span>
-          </div>
+          <CRow className="fullTest-exams-list">
+            <CCol lg="4" className="fullTest-exams-list-child">
+              {exams.map(exam => (
+                <Exam key={exam._id} exam={exam} />
+              ))}
+            </CCol>
+          </CRow>
           <CRow className="fullTest-exams-point-content">
             TOEIC - viết tắt của Test of English for International Communication
             (Bài kiểm tra tiếng Anh giao tiếp quốc tế) - là một chứng chỉ tiếng

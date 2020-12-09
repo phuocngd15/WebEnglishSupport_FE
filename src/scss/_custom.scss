@@ -51,8 +51,7 @@ $spaceamounts: (1, 2, 3, 4, 5);
 #modified-header {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 10px;
 }
-#modified-subheader {
-}
+
 * {
   box-sizing: border-box;
 }
@@ -61,4 +60,12 @@ $spaceamounts: (1, 2, 3, 4, 5);
 #modified-header {
   padding: 0 250px;
 }
+// @media only screen and (max-device-width:576px)
+// {
+//   .c-main,
+// .footer,
+// #modified-header {
+//   padding: 0 10px;
+// }
+//}
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+const token = localStorage.getItem('token')
 const axiosGet = async props => {
   const { url, ...rest } = props;
   console.log(props);
@@ -26,5 +26,11 @@ const axiosPost = async props => {
   }
   return response;
 };
+axios.create({
+  headers:{
+    'Content-Type':'application/json',
+    'Authorization':`Bearer ${token}`
+  }
+})
 
 export { axiosGet, axiosPost };

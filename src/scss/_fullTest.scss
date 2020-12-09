@@ -62,6 +62,13 @@
   td {
     padding-bottom: 1rem;
     font-size: 18px;
-    color:#321fdb;
+    color: #321fdb;
+  }
+}
+@media only screen and (max-device-width: 1024px) {
+  .fullTest-page {
+    .fullTest-header-subject {
+      color: red;
+    }
   }
 }

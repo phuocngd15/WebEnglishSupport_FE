@@ -17,7 +17,7 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { signinRequest } from '../../../Store/slice/authenticationSlice'
-import { getExamRequest } from '../../../Store/slice/examSlide'
+import { getExamsRequest } from '../../../Store/slice/examSlide'
 
 import useEncrypt from '../../../components/hook/useEncrypt'
 
@@ -42,10 +42,7 @@ const Login = () => {
       url: 'http://localhost:9999/signin'
     }
     dispatch(signinRequest(filterModel))
-    filterModel = {
-      url: 'http://localhost:9999/api/fullexam/'
-    }
-      dispatch(getExamRequest(filterModel))
+   
   }
   if (isloggedIn) return <Redirect to="/" />
 

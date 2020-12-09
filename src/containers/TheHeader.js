@@ -45,17 +45,7 @@ const TheHeader = () => {
   }
 
   return (
-    <CHeader withSubheader id='modified-header' className='container-fluid'>
-      {/*  <CToggler
-        inHeader
-        className="ml-md-3 d-lg-none"
-        onClick={toggleSidebarMobile}
-      />
-      <CToggler
-        inHeader
-        className="ml-3 d-md-down-none"
-        onClick={toggleSidebar}
-      /> */}
+    <CHeader withSubheader id="modified-header" className="container-fluid">
       <CHeaderBrand className="mx-auto d-lg-none" to="/">
         {/* config icon brand here */}
         <CIcon name="logo" height="48" alt="Logo" />
@@ -76,15 +66,16 @@ const TheHeader = () => {
           <CHeaderNavLink to="/dashboard">Đề thi thử</CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem className="px-3">
-          <CHeaderNavLink to="/#">Cách tính điểm TOEIC</CHeaderNavLink>
+          <CHeaderNavLink to="/ThangDiemToeic">
+            Cách tính điểm TOEIC
+          </CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem className="px-3">
           <CHeaderNavLink to="/#">Tài liệu tham khảo</CHeaderNavLink>
         </CHeaderNavItem>
-
       </CHeaderNav>
 
-      <CHeaderNav className="px-3" >
+      <CHeaderNav className="px-3">
         <TheHeaderTestDropdown></TheHeaderTestDropdown>
         <TheHeaderDropdownNotif />
         <TheHeaderDropdownTasks />
@@ -92,7 +83,10 @@ const TheHeader = () => {
         <TheHeaderDropdown />
       </CHeaderNav>
 
-      <CSubheader id='modified-subheader' className="px-3 justify-content-between">
+      <CSubheader
+        id="modified-subheader"
+        className="px-3 justify-content-between"
+      >
         <CBreadcrumbRouter
           className="border-0 c-subheader-nav m-0 px-0 px-md-3"
           routes={routes}
