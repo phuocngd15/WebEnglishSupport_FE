@@ -12,6 +12,16 @@ export default [
   },
   {
     _tag: 'CSidebarNavItem',
+    name: 'CachTinhDiemThi',
+    to: '/ThangDiemToeic',
+    icon: 'cil-speedometer',
+    badge: {
+      color: 'info',
+      text: 'NEW'
+    }
+  },
+  {
+    _tag: 'CSidebarNavItem',
     name: 'BatDauThi',
     to: '/BatDauThi',
     icon: 'cil-speedometer',

@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const startQuiz = () => {
    
-
   return (
     <div>
       {/* {exam.title} */}
