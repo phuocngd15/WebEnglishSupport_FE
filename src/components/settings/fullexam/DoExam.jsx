@@ -1,4 +1,4 @@
-import { CCol, CRow, CFormGroup, CInputRadio, CLabel } from '@coreui/react'
+import { CCol, CRow } from '@coreui/react'
 import React, { useState } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import rc from './LC.pdf'
