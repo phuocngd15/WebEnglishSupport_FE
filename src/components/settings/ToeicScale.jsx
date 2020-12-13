@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const ToeicScale = () => {
-    return (
-        <div>
-            toeic
-        </div>
-    )
-}
+  return <div>toeic</div>;
+};
 
-export default ToeicScale
+export default ToeicScale;

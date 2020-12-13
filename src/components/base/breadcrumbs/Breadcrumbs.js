@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   CBreadcrumb,
   CBreadcrumbItem,
@@ -9,19 +9,23 @@ import {
   CLink,
   CCol,
   CRow
-} from '@coreui/react'
-import routes from '../../../containers/routes'
+} from '@coreui/react';
+import routes from '../../../containers/routes';
 
 const Breadcrumbs = () => {
   return (
     <CRow>
-      <CCol xs="12">
+      <CCol xs='12'>
         <CCard>
           <CCardHeader>
             Bootstrap Breadcrumb
-            <div className="card-header-actions">
+            <div className='card-header-actions'>
               <CLink
                 to="https://coreui.github.io/components/breadcrumbs/"
+                rel='noreferrer noopener'
+                target='_blank'
+                className='card-header-action'>
+                <small className='text-muted'>docs</small>
                 rel="noreferrer noopener"
                 target="_blank"
                 className="card-header-action"
@@ -67,7 +71,7 @@ const Breadcrumbs = () => {
         </CCard>
       </CCol>
     </CRow>
-  )
-}
+  );
+};
 
-export default Breadcrumbs
+export default Breadcrumbs;

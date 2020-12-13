@@ -326,4 +326,4 @@ export default [
     _tag: 'CSidebarNavDivider',
     className: 'm-2'
   }
-]
+];

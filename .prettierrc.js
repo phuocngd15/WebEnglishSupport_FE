@@ -1,4 +1,8 @@
 module.exports = {
-  semi: false,
-  singleQuote: true
-};
+  semi: true,
+  singleQuote: true,
+  jsxSingleQuote: true,
+  quoteProps: 'preserve',
+  jsxBracketSameLine: true,
+  arrowParens: 'avoid'
+}

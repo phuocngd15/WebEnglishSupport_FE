@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   CCard,
   CCardBody,
@@ -12,17 +12,13 @@ import {
   CCarouselIndicators,
   CCarouselInner,
   CCarouselItem
-} from '@coreui/react'
+} from '@coreui/react';
 
-import routes from '../../../containers/routes'
-import '../../../scss/style.scss'
+import routes from '../../../containers/routes';
+import '../../../scss/style.scss';
 
 const PageTestFull = () => {
-  return (
-    <CContainer>
-     
-    </CContainer>
-  )
-}
+  return <CContainer></CContainer>;
+};
 
-export default PageTestFull
+export default PageTestFull;
