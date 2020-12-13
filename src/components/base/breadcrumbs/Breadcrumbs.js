@@ -20,14 +20,14 @@ const Breadcrumbs = () => {
           <CCardHeader>
             Bootstrap Breadcrumb
             <div className="card-header-actions">
-              <a
-                href="https://coreui.github.io/components/breadcrumbs/"
+              <CLink
+                to="https://coreui.github.io/components/breadcrumbs/"
                 rel="noreferrer noopener"
                 target="_blank"
                 className="card-header-action"
               >
                 <small className="text-muted">docs</small>
-              </a>
+              </CLink>
             </div>
           </CCardHeader>
           <CCardBody>
