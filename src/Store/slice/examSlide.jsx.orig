@@ -1,0 +1,93 @@
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { axiosGet, axiosPost } from '../../axios/axios';
+
+<<<<<<< HEAD
+const getExamsRequest = createAsyncThunk('exam/listExam', async model => {
+  const response = await axiosGet(model)
+  return response.data
+})
+
+const getExamRequest = createAsyncThunk('exam/getExam', async model => {
+  const response = await axiosGet(model)
+  return response.data
+})
+=======
+const getExamsRequest = createAsyncThunk('/listExam', async model => {
+  const response = await axiosGet(model);
+  return response.data;
+});
+
+const getExamRequest = createAsyncThunk('/exam', async model => {
+  const response = await axiosGet(model);
+  return response.data;
+});
+>>>>>>> 05ee717... update Register, Login
+
+const examSlide = createSlice({
+  name: 'exam',
+  initialState: {
+    token: localStorage.getItem('token'),
+    exam: null,
+    exams: [],
+    loading: false,
+    error: {}
+  },
+  reducers: {
+    getExams: (state, action) => {
+<<<<<<< HEAD
+      const data = action.payload
+      state.exams = data[0]
+      state.exam = null
+=======
+      const data = action.payload;
+      state.exams = data[0];
+>>>>>>> 05ee717... update Register, Login
+    },
+    getOneExam: (state, action) => {
+      state = state;
+      state.exam = action.payload;
+    }
+  },
+  extraReducers: {
+    [getExamsRequest.pending]: (state, action) => {
+      console.log('pending');
+    },
+    [getExamsRequest.fulfilled]: (state, action) => {
+<<<<<<< HEAD
+      state.exams = action.payload
+      state.exam = null
+      console.log('fulfilled')
+=======
+      state.exams = action.payload;
+      console.log('fulfilled');
+>>>>>>> 05ee717... update Register, Login
+    },
+    [getExamsRequest.rejected]: (state, action) => {
+      console.log('rejected');
+      state.messageLog = 'Cannot get list exams';
+    },
+    [getExamRequest.pending]: (state, action) => {
+      console.log('pending');
+    },
+    [getExamRequest.fulfilled]: (state, action) => {
+      state.exam = action.payload;
+      console.log('fulfilled');
+    },
+    [getExamRequest.rejected]: (state, action) => {
+      console.log('rejected');
+      state.messageLog = 'Cannot get exam';
+    }
+  }
+});
+
+<<<<<<< HEAD
+const { reducer, actions } = examSlide
+const { getExams, getOneExam, refreshExam } = actions
+export { getExams, getExamsRequest, getExamRequest, getOneExam, refreshExam }
+export default reducer
+=======
+const { reducer, actions } = examSlide;
+const { getExams, getOneExam } = actions;
+export { getExams, getExamsRequest, getExamRequest, getOneExam };
+export default reducer;
+>>>>>>> 05ee717... update Register, Login
