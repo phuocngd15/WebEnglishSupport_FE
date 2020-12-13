@@ -1,93 +1,96 @@
-import React, { Fragment, useEffect, useState } from 'react'
-import { CCol, CRow, CContainer, CLink } from '@coreui/react'
-import { mdiClockAlertOutline } from '@mdi/js'
-import Icon from '@mdi/react'
-import { getExamRequest, getExamsRequest } from '../../../Store/slice/examSlide'
-import { Link, Redirect } from 'react-router-dom'
-import Exam from './Exam'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { Fragment, useEffect, useState } from 'react';
+import { CCol, CRow, CContainer, CLink } from '@coreui/react';
+import { mdiClockAlertOutline } from '@mdi/js';
+import Icon from '@mdi/react';
+import {
+  getExamRequest,
+  getExamsRequest
+} from '../../../Store/slice/examSlide';
+import { Link, Redirect } from 'react-router-dom';
+import Exam from './Exam';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Exams = () => {
-  const { isloggedIn } = useSelector(state => state.authentication)
-  const [isLogin, setIsLogin] = useState(isloggedIn)
-  const exams = useSelector(state => state.exam).exams
-  const dispatch = useDispatch()
+  const { isloggedIn } = useSelector(state => state.authentication);
+  const [isLogin, setIsLogin] = useState(isloggedIn);
+  const exams = useSelector(state => state.exam).exams;
+  const dispatch = useDispatch();
   const filterModel = {
     url: 'http://localhost:9999/api/fullexam/'
-  }
+  };
   useEffect(() => {
     if (isLogin) {
-      dispatch(getExamsRequest(filterModel))
+      dispatch(getExamsRequest(filterModel));
     }
-  }, [isLogin])
+  }, [isLogin]);
   return (
     <Fragment>
-      <div className="fullTest-page">
-        <div className="fullTest-header ">
+      <div className='fullTest-page'>
+        <div className='fullTest-header '>
           <CRow>
-            <CCol lg="7" className="fullTest-header-subject">
+            <CCol lg='7' className='fullTest-header-subject'>
               <div>Thi thử TOEIC</div>
               <div>Đề thi thật 2020</div>
             </CCol>
-            <CCol md lg="5">
+            <CCol md lg='5'>
               <img
-                src="image/Capture.JPG"
-                alt="advertise 1"
-                loading="lazy"
-                align="left"
-                className="fullTest-image"
+                src='image/Capture.JPG'
+                alt='advertise 1'
+                loading='lazy'
+                align='left'
+                className='fullTest-image'
               />
             </CCol>
           </CRow>
         </div>
-        <div className="fullTest-exams col-sm-12">
-          <div className="fullTest-exams-title">
+        <div className='fullTest-exams col-sm-12'>
+          <div className='fullTest-exams-title'>
             Full Test - Thi thử đề thật{' '}
-            <span className="fullTest-exams-title-child">
+            <span className='fullTest-exams-title-child'>
               <Icon
                 path={mdiClockAlertOutline}
-                title="User Profile"
+                title='User Profile'
                 size={1}
                 horizontal
                 vertical
                 rotate={180}
-                color="red"
-                className="mr-2"
+                color='red'
+                className='mr-2'
               />
               Thời lượng: 120 phút
             </span>
           </div>
-          <CRow className="fullTest-exams-list">
-            <CCol lg="4" className="fullTest-exams-list-child">
+          <CRow className='fullTest-exams-list'>
+            <CCol lg='4' className='fullTest-exams-list-child'>
               {exams.map(exam => (
                 <Exam key={exam._id} exam={exam} />
               ))}
             </CCol>
           </CRow>
-          <div className="fullTest-exams-title">
+          <div className='fullTest-exams-title'>
             Mini Test - Kiểm tra trình độ{' '}
-            <span className="fullTest-exams-title-child">
+            <span className='fullTest-exams-title-child'>
               <Icon
                 path={mdiClockAlertOutline}
-                title="User Profile"
+                title='User Profile'
                 size={1}
                 horizontal
                 vertical
                 rotate={180}
-                color="red"
-                className="mr-2"
+                color='red'
+                className='mr-2'
               />
               Thời lượng: 30 phút{' '}
             </span>
           </div>
-          <CRow className="fullTest-exams-list">
-            <CCol lg="4" className="fullTest-exams-list-child">
+          <CRow className='fullTest-exams-list'>
+            <CCol lg='4' className='fullTest-exams-list-child'>
               {exams.map(exam => (
                 <Exam key={exam._id} exam={exam} />
               ))}
             </CCol>
           </CRow>
-          <CRow className="fullTest-exams-point-content">
+          <CRow className='fullTest-exams-point-content'>
             TOEIC - viết tắt của Test of English for International Communication
             (Bài kiểm tra tiếng Anh giao tiếp quốc tế) - là một chứng chỉ tiếng
             Anh quốc tế dành cho các quốc gia không sử dụng tiếng Anh như ngôn
@@ -112,7 +115,7 @@ const Exams = () => {
         </div>
       </div>
     </Fragment>
-  )
-}
+  );
+};
 
-export default Exams
+export default Exams;

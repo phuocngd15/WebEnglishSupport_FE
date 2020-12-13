@@ -24,7 +24,7 @@ const examSlide = createSlice({
     getExams: (state, action) => {
       const data = action.payload;
       state.exams = data[0];
-      state.exam = null
+      state.exam = null;
     },
     getOneExam: (state, action) => {
       state = state;
@@ -37,7 +37,8 @@ const examSlide = createSlice({
     },
     [getExamsRequest.fulfilled]: (state, action) => {
       state.exams = action.payload;
-      state.exam = null
+      state.exam = null;
+      console.log('fulfilled');
     },
     [getExamsRequest.rejected]: (state, action) => {
       console.log('rejected');
@@ -58,6 +59,6 @@ const examSlide = createSlice({
 });
 
 const { reducer, actions } = examSlide;
-const { getExams, getOneExam, refreshExam } = actions
-export { getExams, getExamsRequest, getExamRequest, getOneExam, refreshExam }
+const { getExams, getOneExam, refreshExam } = actions;
+export { getExams, getExamsRequest, getExamRequest, getOneExam, refreshExam };
 export default reducer;

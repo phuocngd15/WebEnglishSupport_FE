@@ -1,12 +1,12 @@
-import React, { Fragment, useEffect, useState } from 'react'
-import { CLink } from '@coreui/react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getExamRequest } from '../../../Store/slice/examSlide'
-import { useHistory } from 'react-router-dom'
+import React, { Fragment, useEffect, useState } from 'react';
+import { CLink } from '@coreui/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getExamRequest } from '../../../Store/slice/examSlide';
+import { useHistory } from 'react-router-dom';
 const Exam = ({ exam }) => {
   return (
-    <div className="container">
-      <tr className="exam-page">
+    <div className='container'>
+      <tr className='exam-page'>
         <td>
           <li>
             <CLink to={'/BauDauThi/' + exam._id} key={exam._id}>
@@ -16,7 +16,7 @@ const Exam = ({ exam }) => {
         </td>
       </tr>
     </div>
-  )
-}
+  );
+};
 
-export default Exam
+export default Exam;

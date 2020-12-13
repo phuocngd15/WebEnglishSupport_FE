@@ -27,14 +27,14 @@ const Login = () => {
   const { isloggedIn, messageLog } = useSelector(state => state.authentication);
   const emailRef = useRef();
   const passRef = useRef();
-  const [encrypt,giaima] = useEncrypt();
+  const [encrypt, giaima] = useEncrypt();
 
   const handelLogin = e => {
     e.preventDefault();
     const emailEncrypted = encrypt(getValueRef(emailRef));
     const passEncrypted = encrypt(getValueRef(passRef));
-    console.log(giaima(emailEncrypted))
-    console.log(giaima(passEncrypted))
+    console.log(giaima(emailEncrypted));
+    console.log(giaima(passEncrypted));
     let filterModel = {
       email: emailEncrypted,
       password: passEncrypted,
