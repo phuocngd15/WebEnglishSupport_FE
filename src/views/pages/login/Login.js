@@ -17,7 +17,6 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { signinRequest } from '../../../Store/slice/authenticationSlice'
-import { getExamsRequest } from '../../../Store/slice/examSlide'
 
 import useEncrypt from '../../../components/hook/useEncrypt'
 

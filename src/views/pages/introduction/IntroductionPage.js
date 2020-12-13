@@ -19,11 +19,11 @@ const IntroductionPage = () => {
           <div>So easy!</div>
         </div>
         <div className='introduction-page-footer'>
-          <div class="button" id="button-1">
+          <div className="button" id="button-1">
             <div id="slide"></div>
             <div onClick={handleRegister}>Register</div>
           </div>
-          <div class="button" id="button-2">
+          <div className="button" id="button-2">
             <div id="slide"></div>
             <div onClick={handleLogin}>Login</div>
             <LoginIcon />

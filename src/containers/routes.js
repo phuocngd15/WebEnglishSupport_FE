@@ -1,10 +1,10 @@
 import React from 'react'
 
-const intro = React.lazy(() =>
-  import('../components/settings/fullexam/ListExam')
+const home = React.lazy(() => import('../components/settings/fullexam/Home'))
+const intro = React.lazy(() => import('../components/settings/fullexam/Intro'))
+const doExam = React.lazy(() =>
+  import('../components/settings/fullexam/DoExam')
 )
-const startQuiz = React.lazy(() => import('../components/settings/startQuiz'))
-
 const ToeicScale = React.lazy(() => import('../components/settings/ToeicScale'))
 const Toaster = React.lazy(() =>
   import('../components/notifications/toaster/Toaster')
@@ -87,7 +87,7 @@ const Users = React.lazy(() => import('../components/users/Users'))
 const User = React.lazy(() => import('../components/users/User'))
 
 const routes = [
-  { path: '/', name: 'Home', component: intro, exact: true },
+  { path: '/', name: 'Home', component: home, exact: true },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   {
     path: '/ThangDiemToeic',
@@ -95,11 +95,11 @@ const routes = [
     component: ToeicScale
   },
   {
-    path: '/BauDauThi',
+    path: '/BauDauThi/:id',
     name: 'Bắt đầu thi',
-    component: startQuiz
+    component: intro
   },
-
+  { path: '/doExam', name: 'Làm bài thi', component: doExam },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },

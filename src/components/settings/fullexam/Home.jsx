@@ -4,7 +4,6 @@ import { mdiClockAlertOutline } from '@mdi/js'
 import Icon from '@mdi/react'
 import { getExamRequest, getExamsRequest } from '../../../Store/slice/examSlide'
 import { Link, Redirect } from 'react-router-dom'
-import startQuiz from '../startQuiz'
 import Exam from './Exam'
 import { useDispatch, useSelector } from 'react-redux'
 

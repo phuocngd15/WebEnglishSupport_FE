@@ -35,7 +35,7 @@ const App = () => {
             <PageIntro />
           </Route>
           <Route exact path="/login" name="Login Page">
-            {!isloggedIn ? <Login /> : <Redirect to="/" />}
+            {/* {!isloggedIn ? <Login /> : <Redirect to="/" />} */}
             <Login />
           </Route>
           <Route exact path="/register" name="Register Page">
@@ -48,8 +48,8 @@ const App = () => {
             <Page500 />
           </Route>
           <Route path="/" name="Home">
-            {/* <TheLayout /> */}
-            {isloggedIn ? <TheLayout /> : <Redirect to="/login" />}
+            <TheLayout />
+            {/* {isloggedIn ? <TheLayout /> : <Redirect to="/login" />} */}
           </Route>
         </Switch>
       </React.Suspense>
