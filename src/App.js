@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './scss/style.scss';
-import setAuthToken from './components/settings/utils/setAuthToken';
 import Recover from './views/pages/recover/recover';
 const loading = (
   <div className='pt-3 text-center'>

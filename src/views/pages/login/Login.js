@@ -17,7 +17,7 @@ import {
   CRow
 } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
-import { signinRequest } from '../../../Store/slice/authenticationSlice';
+import { signIn } from '../../../Store/slice/authenticationSlice';
 import useEncrypt from '../../../components/hook/useEncrypt';
 import { getValueRef } from '../../../Share/func';
 
@@ -25,21 +25,22 @@ const Login = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const { isloggedIn, messageLog } = useSelector(state => state.authentication);
-  const usernameRef = useRef(null);
-  const passRef = useRef(null);
-  const [encrypt] = useEncrypt();
+  const emailRef = useRef();
+  const passRef = useRef();
+  const [encrypt,giaima] = useEncrypt();
 
   const handelLogin = e => {
     e.preventDefault();
-    const usernameEncrypted = encrypt(getValueRef(usernameRef.current.value));
-    const passEncrypted = encrypt(getValueRef(passRef.current.value));
-
+    const emailEncrypted = encrypt(getValueRef(emailRef));
+    const passEncrypted = encrypt(getValueRef(passRef));
+    console.log(giaima(emailEncrypted))
+    console.log(giaima(passEncrypted))
     let filterModel = {
-      email: usernameEncrypted,
+      email: emailEncrypted,
       password: passEncrypted,
       url: 'http://localhost:9999/signin'
     };
-    dispatch(signinRequest(filterModel));
+    dispatch(signIn(filterModel));
   };
   if (isloggedIn) return <Redirect to='/' />;
 
@@ -67,9 +68,9 @@ const Login = () => {
                       </CInputGroupPrepend>
                       <input
                         type='text'
-                        ref={usernameRef}
-                        placeholder='Username'
-                        autoComplete='username'
+                        ref={emailRef}
+                        placeholder='email@gmail.com'
+                        autoComplete='email'
                       />
                     </CInputGroup>
                     <CInputGroup className='mb-3'>

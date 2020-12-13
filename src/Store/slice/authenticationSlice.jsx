@@ -1,90 +1,66 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { axiosGet, axiosPost } from '../../axios/axios';
-import CryptoJS from 'crypto-js';
-const signinRequest = createAsyncThunk('account/signin', async model => {
-  const response = await axiosPost(model);
-  return response.data;
-});
-const signupRequest = createAsyncThunk('account/signup', async model => {
-  const response = await axiosPost(model);
-  return response.data;
-});
-const decrypt = value => {
-  const bytes = CryptoJS.AES.decrypt(value, 'SecretPassphrase'); // SecretPassphrase can handle by server
-  return bytes.toString(CryptoJS.enc.Utf8);
-};
-const getStateLogin = () => {
-  const username = decrypt('loginUserState');
-  if (username) {
-    return true;
-  }
-  return false;
-};
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { axiosGet, axiosPost, post } from '../../axios/axios'
+
+const signIn = createAsyncThunk('account/signin', async model => {
+  const response = await axiosPost(model)
+  return response.data
+})
+const signUP = createAsyncThunk('account/signup', async model => {
+  const response = await axiosPost(model)
+  return response.data
+})
+
 const authenticationSlice = createSlice({
   name: 'authentication',
   initialState: {
-    accountAtLocalStore: getStateLogin(),
     loginState: {},
-    isloggedIn: false,
+    isLogin: false,
     loading: false
   },
   reducers: {
-    login: (state, action) => {
-      state.isLogin = action.payload;
-    },
-    logout: state => {
-      state.loginState = {};
+    logOut: state => {
+      state.loginState = {}
     },
     updateStateLogin: (state, action) => {
-      const data = action.payload;
+      const data = action.payload
       state.loginState = {
         token: data[0],
         email: data[1],
         rule: data[2]
-      };
+      }
     }
   },
   extraReducers: {
-    [signinRequest.pending]: (state, action) => {
-      console.log('pending');
+    [signIn.pending]: (state, action) => {},
+    [signIn.fulfilled]: (state, action) => {
+      const data = action.payload
+      state.loginState = {
+        token: data[0],
+        email: data[1],
+        rule: data[2]
+      }
+      state.isLogin = true
     },
-    [signinRequest.fulfilled]: (state, action) => {
-      const data = action.payload;
+    [signIn.rejected]: (state, action) => {
+      state.isLogin = false
+      state.messageLog = 'logfail'
+    },
+
+    [signUP.pending]: (state, action) => {},
+    [signUP.fulfilled]: (state, action) => {
+      const data = action.payload
 
       state.loginState = {
         token: data[0],
         email: data[1],
         rule: data[2]
-      };
-      state.isloggedIn = true;
-      console.log('fulfilled');
+      }
     },
-    [signinRequest.rejected]: (state, action) => {
-      console.log('rejected');
-      state.isloggedIn = false;
-      state.messageLog = 'logfail';
-    },
-
-    [signupRequest.pending]: (state, action) => {
-      console.log('pending');
-    },
-    [signupRequest.fulfilled]: (state, action) => {
-      const data = action.payload;
-
-      state.loginState = {
-        token: data[0],
-        email: data[1],
-        rule: data[2]
-      };
-      console.log('fulfilled');
-    },
-    [signupRequest.rejected]: (state, action) => {
-      console.log('rejected');
-    }
+    [signUP.rejected]: (state, action) => {}
   }
-});
-const { reducer, actions } = authenticationSlice;
-const { login, logout, updateStateLogin } = actions;
-export { login, logout, updateStateLogin, signinRequest, signupRequest };
+})
+const { reducer, actions } = authenticationSlice
+const { logOut, updateStateLogin } = actions
+export { logOut, updateStateLogin, signIn, signUP }
 // Export the reducer, either as a default or named export
-export default reducer;
+export default reducer
