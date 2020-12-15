@@ -1,18 +1,28 @@
-import { CCol, CRow } from '@coreui/react';
-import React, { useState } from 'react';
+import { CCol, CRow, CButton } from '@coreui/react';
+import React, { useState, useRef } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import rc from './LC.pdf';
 import Questions from './Questions';
+import { mdiTriangle } from '@mdi/js';
+import Icon from '@mdi/react';
+import { mdiPause } from '@mdi/js';
+import audio from './TEST 01.mp3';
+import useSound from 'use-sound';
+import TimeSlider from 'react-input-slider';
+import Countdown from 'react-countdown';
+
 const DoExam = () => {
+  // pdf
   const url = rc;
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
+  const [time, setTime] = useState(false);
 
-  /*To Prevent right click on screen*/
-  //   document.addEventListener('contextmenu', event => {
-  //     event.preventDefault()
-  //   })
+  // luu state.dapan
+
+  const [ans, setAns] = useState([]);
+  let res = [];
   /*When document gets loaded successfully*/
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -30,8 +40,94 @@ const DoExam = () => {
     changePage(1);
   }
 
+  // counter
+  const handleCounter = e => {
+    e.preventDefault();
+    setTime({ time: true });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
+
   return (
     <div className='doExam-main'>
+      <CRow>
+        <CCol>
+          <div className='doExam-main-intro'>
+            <h3>Mark your answer on your answer sheet:</h3>
+            <p>
+              Please refrain from replaying the audio, you can only listen one
+              time when in real exam.
+            </p>
+            <p>Audio:</p>
+            {/* <div className='Pause-Play-Button' onClick={handlePausePlayClick}>
+          {isPlay ? (
+            <Icon path={mdiPause} title='Pause' size={1} horizontal vertical />
+          ) : (
+            <Icon
+              path={mdiTriangle}
+              title='Play'
+              size={1}
+              horizontal
+              vertical
+              rotate={270}
+            />
+          )}
+        </div> */}
+            <TimeSlider
+              axis='x'
+              // xmax={duration}
+              // x={currentTime}
+              // onChange={handleTimeSliderChange}
+              styles={{
+                track: {
+                  backgroundColor: '#e3e3e3',
+                  height: '2px'
+                },
+                active: {
+                  backgroundColor: '#333',
+                  height: '2px'
+                },
+                thumb: {
+                  marginTop: '-3px',
+                  width: '8px',
+                  height: '8px',
+                  backgroundColor: '#333',
+                  borderRadius: 0
+                }
+              }}
+            />{' '}
+          </div>
+        </CCol>
+        <CCol md='4'>
+          {time ? (
+            <>
+              <Countdown
+                className='doExam-main-counter'
+                date={Date.now() + 7200000}
+              />
+              <CButton
+                variant='outline'
+                color='danger'
+                size='lg'
+                className='intro-container-btn-start'
+                onClick={handleSubmit}>
+                SUBMIT
+              </CButton>
+            </>
+          ) : (
+            <CButton
+              variant='outline'
+              color='success'
+              size='lg'
+              className='intro-container-btn-start'
+              onClick={handleCounter}>
+              START
+            </CButton>
+          )}
+        </CCol>
+      </CRow>
       <CRow>
         <CCol lg='8'>
           <Document
@@ -44,26 +140,41 @@ const DoExam = () => {
             <div className='pagec'>
               Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
             </div>
+
             <div className='button'>
               <button
                 type='button'
                 disabled={pageNumber <= 1}
                 onClick={previousPage}
-                className='Pre'>
-                Previous
+                className='Pre mr-2'>
+                <Icon
+                  path={mdiTriangle}
+                  title='Previous'
+                  size={1}
+                  horizontal
+                  vertical
+                  rotate={90}
+                />
               </button>
               <button
                 type='button'
                 disabled={pageNumber >= numPages}
                 onClick={nextPage}>
-                Next
+                <Icon
+                  path={mdiTriangle}
+                  title='Next page'
+                  size={1}
+                  horizontal
+                  vertical
+                  rotate={270}
+                />
               </button>
             </div>
           </div>
         </CCol>
         <CCol md='4' className='doExam-question'>
           {numPages ? (
-            <Questions pageNumber={pageNumber} numPages={numPages} />
+            <Questions pageNumber={pageNumber} numPages={numPages} res={res} />
           ) : (
             <h1>Loading</h1>
           )}

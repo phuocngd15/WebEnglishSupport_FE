@@ -5,23 +5,23 @@ import {
   getExamsRequest
 } from '../../../Store/slice/examSlide';
 import { useParams, useHistory } from 'react-router-dom';
-import { CButton, CContainer } from '@coreui/react';
+import { CButton, CContainer, CLink } from '@coreui/react';
 
 const Intro = () => {
   let id = useParams();
 
-  const { isloggedIn } = useSelector(state => state.authentication);
-  const [isLogin, setIsLogin] = useState(isloggedIn);
+  const { isLogin } = useSelector(state => state.authentication);
+  const [islogin, setIsLogin] = useState(isLogin);
   const dispatch = useDispatch();
 
   const filterModel = {
     url: `http://localhost:9999/api/fullexam/${id.id}`
   };
   useEffect(() => {
-    if (isLogin) {
+    if (islogin) {
       dispatch(getExamRequest(filterModel));
     }
-  }, [isLogin]);
+  }, [islogin]);
   let exam = useSelector(state => state.exam).exam;
   console.log(exam);
 
@@ -38,7 +38,7 @@ const Intro = () => {
         color='success'
         size='lg'
         className='intro-container-btn-start'>
-        START
+        <CLink to='/doExam'>START</CLink>
       </CButton>
     </CContainer>
   );

@@ -1,21 +1,9 @@
 import React, { useState } from 'react';
-import {
-  CCol,
-  CFormGroup,
-  CInput,
-  CInputRadio,
-  CLabel,
-  CRow
-} from '@coreui/react';
+import { CCol, CFormGroup, CLabel, CRow } from '@coreui/react';
 
 const Question = ({ number }) => {
   const [check, setStateCheck] = useState();
-
-  const onChangeRadio = e => {
-    setStateCheck({ check: e.target.value });
-  };
   console.log(check);
-
   return (
     <CFormGroup row>
       <CCol md='3'>
@@ -27,22 +15,22 @@ const Question = ({ number }) => {
             <input
               type='radio'
               className='radio-btn'
-              value={'option-' + number + 'a'}
-              checked={check === `option-${number}a`}
+              value={number + 'a'}
+              checked={check === `${number}a`}
               onClick={() => {
-                setStateCheck(`option-${number}a`);
+                setStateCheck(`${number}a`);
               }}
             />
-            <CLabel>A</CLabel>
+            A
           </div>
           <div className='mr-3'>
             <input
               type='radio'
               className='radio-btn'
-              value={'option-' + number + 'b'}
-              checked={check === `option-${number}b`}
+              value={number + 'b'}
+              checked={check === `${number}b`}
               onClick={() => {
-                setStateCheck(`option-${number}b`);
+                setStateCheck(`${number}b`);
               }}
             />
             B
@@ -51,10 +39,10 @@ const Question = ({ number }) => {
             <input
               type='radio'
               className='radio-btn'
-              value={'option-' + number + 'c'}
-              checked={check === `option-${number}c`}
+              value={number + 'c'}
+              checked={check === `${number}c`}
               onClick={() => {
-                setStateCheck(`option-${number}c`);
+                setStateCheck(`${number}c`);
               }}
             />
             C
@@ -63,10 +51,10 @@ const Question = ({ number }) => {
             <input
               type='radio'
               className='radio-btn'
-              value={'option-' + number + 'd'}
-              checked={check === `option-${number}d`}
+              value={'' + number + 'd'}
+              checked={check === `${number}d`}
               onClick={() => {
-                setStateCheck(`option-${number}d`);
+                setStateCheck(`${number}d`);
               }}
             />
             D

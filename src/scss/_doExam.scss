@@ -3,16 +3,24 @@
   height: auto;
   text-align: center;
   margin: 2rem 0;
+  .doExam-main-intro {
+    margin: 2rem 0;
 
+  }
   .doExam-exam {
     border: 1px solid darkblue;
     margin-right: 3rem;
   }
   .doExam-question {
     border: 1px solid darkblue;
-  } 
+  }
+  .doExam-main-counter{
+    font-weight: bold;
+    font-size: 20px;
+    margin:0 1rem;
+  }
 }
-.radio-btn{
+.radio-btn {
   margin-right: 10px;
   font-size: 20px;
 }

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CCol, CFormGroup, CInputRadio, CLabel } from '@coreui/react';
 import Question from './Question';
-const Questions = ({ pageNumber, numPages }) => {
+const Questions = ({ pageNumber, numPages, res }) => {
+  const [result, setResult] = useState(res);
   let group = [];
   let index = 0;
   let part = 1;
@@ -17,7 +18,6 @@ const Questions = ({ pageNumber, numPages }) => {
       j++;
     }
   }
-  console.log(pageNumber);
   switch (pageNumber) {
     case 5:
       part = 2;
@@ -56,10 +56,7 @@ const Questions = ({ pageNumber, numPages }) => {
     <>
       <h1>Part {part}</h1>
       {pageNumber ? (
-        group[index].map(
-          question => <Question number={question} />,
-          <h1>adfa</h1>
-        )
+        group[index].map(question => <Question number={question}/>)
       ) : (
         <h1>Loading</h1>
       )}

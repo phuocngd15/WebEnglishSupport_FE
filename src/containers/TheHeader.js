@@ -52,6 +52,9 @@ const TheHeader = () => {
       </CHeaderBrand>
       {exam ? (
         <>
+          <CHeaderNavItem className='px-3'>
+            <CHeaderNavLink to='/dashboard'>Đề thi thử</CHeaderNavLink>
+          </CHeaderNavItem>
           <CHeaderNav className='d-md-down-none mr-auto header'>
             <CLink className='navbar-brand logo' to='#'>
               <img
