@@ -19,8 +19,8 @@ const authenticationSlice = createSlice({
   },
   reducers: {
     logOut: state => {
-      state.loginState = {}
-      state.isLogin = false
+      state.loginState = {};
+      state.isLogin = false;
     },
     updateStateLogin: (state, action) => {
       const data = action.payload;

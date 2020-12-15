@@ -11,18 +11,19 @@ import Exam from './Exam';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Exams = () => {
-  const { isloggedIn } = useSelector(state => state.authentication);
-  const [isLogin, setIsLogin] = useState(isloggedIn);
+  const { isLogin } = useSelector(state => state.authentication);
+  const [islogin, setIsLogin] = useState(isLogin);
   const exams = useSelector(state => state.exam).exams;
   const dispatch = useDispatch();
   const filterModel = {
     url: 'http://localhost:9999/api/fullexam/'
   };
+  console.log(islogin);
   useEffect(() => {
-    if (isLogin) {
+    if (islogin) {
       dispatch(getExamsRequest(filterModel));
     }
-  }, [isLogin]);
+  }, [islogin]);
   return (
     <Fragment>
       <div className='fullTest-page'>

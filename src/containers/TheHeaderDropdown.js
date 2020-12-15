@@ -11,19 +11,19 @@ import {
   CHeaderNavLink,
   CHeaderNav,
   CImg
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import { showHideSidebar } from '../Store/slice/sidebarSlice'
-import TheHeaderTestDropdown from './TheHeaderTestDropdown'
-import { logOut } from '../Store/slice/authenticationSlice'
+} from '@coreui/react';
+import CIcon from '@coreui/icons-react';
+import { showHideSidebar } from '../Store/slice/sidebarSlice';
+import TheHeaderTestDropdown from './TheHeaderTestDropdown';
+import { logOut } from '../Store/slice/authenticationSlice';
 
 const TheHeaderDropdown = () => {
-  const exam = useSelector(state => state.exam).exam
+  const exam = useSelector(state => state.exam).exam;
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
     dispatch(logOut());
-  }
+  };
   return (
     <CDropdown inNav className='c-header-nav-items mx-2' direction='down'>
       {exam ? (
@@ -109,12 +109,8 @@ const TheHeaderDropdown = () => {
               </CBadge>
             </CDropdownItem>
             <CDropdownItem divider />
-            <CDropdownItem  onClick={handleLogOut}>
-              <CIcon
-                name="cil-lock-locked"
-                className="mfe-2"
-               
-              />
+            <CDropdownItem onClick={handleLogOut}>
+              <CIcon name='cil-lock-locked' className='mfe-2' />
               Đăng xuất
             </CDropdownItem>
           </CDropdownMenu>
