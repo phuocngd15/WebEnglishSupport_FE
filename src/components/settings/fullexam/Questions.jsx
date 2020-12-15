@@ -56,7 +56,7 @@ const Questions = ({ pageNumber, numPages, res }) => {
     <>
       <h1>Part {part}</h1>
       {pageNumber ? (
-        group[index].map(question => <Question number={question}/>)
+        group[index].map(question => <Question number={question} />)
       ) : (
         <h1>Loading</h1>
       )}
