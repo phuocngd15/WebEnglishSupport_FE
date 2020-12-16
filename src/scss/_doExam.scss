@@ -2,10 +2,9 @@
   width: auto;
   height: auto;
   text-align: center;
-  margin: 2rem 0;
+  margin-bottom: 2rem;
   .doExam-main-intro {
-    margin: 2rem 0;
-
+    margin-bottom: 2rem;
   }
   .doExam-exam {
     border: 1px solid darkblue;
@@ -14,10 +13,10 @@
   .doExam-question {
     border: 1px solid darkblue;
   }
-  .doExam-main-counter{
+  .doExam-main-counter {
     font-weight: bold;
     font-size: 20px;
-    margin:0 1rem;
+    margin: 0 1rem;
   }
 }
 .radio-btn {

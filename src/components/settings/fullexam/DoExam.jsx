@@ -20,9 +20,6 @@ const DoExam = () => {
   const [time, setTime] = useState(false);
 
   // luu state.dapan
-
-  const [ans, setAns] = useState([]);
-  let res = [];
   /*When document gets loaded successfully*/
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -134,50 +131,47 @@ const DoExam = () => {
             className='doExam-exam'
             file={url}
             onLoadSuccess={onDocumentLoadSuccess}>
-            <Page pageNumber={pageNumber} />
-          </Document>
-          <div>
-            <div className='pagec'>
-              Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
-            </div>
+            <Page scale={1.2} pageNumber={pageNumber} />
 
-            <div className='button'>
-              <button
-                type='button'
-                disabled={pageNumber <= 1}
-                onClick={previousPage}
-                className='Pre mr-2'>
-                <Icon
-                  path={mdiTriangle}
-                  title='Previous'
-                  size={1}
-                  horizontal
-                  vertical
-                  rotate={90}
-                />
-              </button>
-              <button
-                type='button'
-                disabled={pageNumber >= numPages}
-                onClick={nextPage}>
-                <Icon
-                  path={mdiTriangle}
-                  title='Next page'
-                  size={1}
-                  horizontal
-                  vertical
-                  rotate={270}
-                />
-              </button>
+            <div>
+              <div className='pagec'>
+                Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
+              </div>
+
+              <div className='button'>
+                <button
+                  type='button'
+                  disabled={pageNumber <= 1}
+                  onClick={previousPage}
+                  className='Pre mr-2'>
+                  <Icon
+                    path={mdiTriangle}
+                    title='Previous'
+                    size={1}
+                    horizontal
+                    vertical
+                    rotate={90}
+                  />
+                </button>
+                <button
+                  type='button'
+                  disabled={pageNumber >= numPages}
+                  onClick={nextPage}>
+                  <Icon
+                    path={mdiTriangle}
+                    title='Next page'
+                    size={1}
+                    horizontal
+                    vertical
+                    rotate={270}
+                  />
+                </button>
+              </div>
             </div>
-          </div>
+          </Document>
         </CCol>
         <CCol md='4' className='doExam-question'>
-          {numPages ? (
-            <Questions pageNumber={pageNumber} numPages={numPages} res={res} />
-          ) : (
-            <h1>Loading</h1>
-          )}
+          <Questions />
         </CCol>
       </CRow>
     </div>

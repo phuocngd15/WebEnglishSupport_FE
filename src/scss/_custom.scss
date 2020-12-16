@@ -58,12 +58,11 @@ $spaceamounts: (1, 2, 3, 4, 5);
 .c-main,
 .footer,
 #modified-header {
-  padding: 0 250px;
-  .test-list{
-    border:1px solid darkblue;
+  .test-list {
+    border: 1px solid darkblue;
     float: right;
-    color:white;
-    margin:2rem;
+    color: white;
+    margin: 2rem;
     font-weight: bold;
     background-color: $success-color;
   }
