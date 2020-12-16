@@ -97,7 +97,7 @@ const DoExam = () => {
                   borderRadius: 0
                 }
               }}
-            />{' '}
+            />
           </div>
         </CCol>
         <CCol md='4'>

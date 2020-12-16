@@ -24,7 +24,7 @@ import { getValueRef } from '../../../Share/func';
 const Login = () => {
   let history = useHistory();
   const dispatch = useDispatch();
-  const { isloggedIn, messageLog } = useSelector(state => state.authentication);
+  const isLogin = useSelector(state => state.authentication.isLogin);
   const emailRef = useRef();
   const passRef = useRef();
   const [encrypt, giaima] = useEncrypt();
@@ -42,7 +42,7 @@ const Login = () => {
     };
     dispatch(signIn(filterModel));
   };
-  if (isloggedIn) return <Redirect to='/' />;
+  if (isLogin) return <Redirect to='/' />;
 
   const handleRecoverPass = () => {
     history.push('/recover');
@@ -50,7 +50,6 @@ const Login = () => {
 
   return (
     <>
-      {messageLog && <div>{messageLog}</div>}
       <div className='c-app c-default-layout flex-row align-items-center'>
         <CContainer>
           <CRow className='justify-content-center'>

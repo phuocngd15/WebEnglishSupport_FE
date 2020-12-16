@@ -13,14 +13,19 @@ const signUP = createAsyncThunk('account/signup', async model => {
 const authenticationSlice = createSlice({
   name: 'authentication',
   initialState: {
-    loginState: {},
-    isLogin: false,
+    loginState: sessionStorage.getItem('login')
+      ? JSON.parse(sessionStorage.getItem('login'))
+      : {},
+    isLogin: sessionStorage.getItem('isLogin')
+      ? JSON.parse(sessionStorage.getItem('isLogin'))
+      : false,
     loading: false
   },
   reducers: {
     logOut: state => {
       state.loginState = {};
       state.isLogin = false;
+      sessionStorage.clear();
     },
     updateStateLogin: (state, action) => {
       const data = action.payload;
@@ -35,12 +40,15 @@ const authenticationSlice = createSlice({
     [signIn.pending]: (state, action) => {},
     [signIn.fulfilled]: (state, action) => {
       const data = action.payload;
-      state.loginState = {
+      const loginState = {
         token: data[0],
         email: data[1],
         rule: data[2]
       };
+      state.loginState = loginState;
       state.isLogin = true;
+      sessionStorage.setItem('login', JSON.stringify(loginState));
+      sessionStorage.setItem('isLogin', JSON.stringify(true));
     },
     [signIn.rejected]: (state, action) => {
       state.isLogin = false;
@@ -63,5 +71,4 @@ const authenticationSlice = createSlice({
 const { reducer, actions } = authenticationSlice;
 const { logOut, updateStateLogin } = actions;
 export { logOut, updateStateLogin, signIn, signUP };
-// Export the reducer, either as a default or named export
 export default reducer;
