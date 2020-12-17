@@ -34,19 +34,21 @@ const Question = props => {
         <input
           key={item.id}
           type='radio'
-          className={`answer-${item.id}`}
+          className={`answer-item answer-${item.id}`}
           checked={item.isChose}
           onClick={() => handleChoose(item.id)}
         />
       );
     });
+    answerHTML.unshift(<span className='answer-row-stt'>{stt}</span>);
     return answerHTML;
   };
   return (
-    <div className='answer-row'>
-      <div>{stt}</div>
-      {buildAnswerRow(answer)}
-    </div>
+    <>
+      <div>
+        <span className='answer-row'>{buildAnswerRow(answer)}</span>
+      </div>
+    </>
   );
 };
 

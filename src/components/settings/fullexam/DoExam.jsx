@@ -126,7 +126,7 @@ const DoExam = () => {
         </CCol>
       </CRow>
       <CRow>
-        <CCol lg='8'>
+        <CCol md='6' sm='12'>
           <Document
             className='doExam-exam'
             file={url}
@@ -170,8 +170,43 @@ const DoExam = () => {
             </div>
           </Document>
         </CCol>
-        <CCol md='4' className='doExam-question'>
-          <Questions />
+        <CCol md='3' sm='12'>
+          <div className='answer-sheet'>
+            <div className='answer-sheet-header'>LISTENING SECTION</div>
+            <CRow>
+              <CCol md='3'>
+                <Questions />
+              </CCol>
+              <CCol md='3'>
+                <Questions />
+              </CCol>
+              <CCol md='3'>
+                <Questions />
+              </CCol>
+              <CCol md='3'>
+                <Questions />
+              </CCol>
+            </CRow>
+          </div>
+        </CCol>
+        <CCol md='3' sm='12'>
+          <div className='answer-sheet'>
+            <div className='answer-sheet-header'>READING SECTION</div>
+            <CRow>
+              <CCol md='3'>
+                <Questions />
+              </CCol>
+              <CCol md='3'>
+                <Questions />
+              </CCol>
+              <CCol md='3'>
+                <Questions />
+              </CCol>
+              <CCol md='3'>
+                <Questions />
+              </CCol>
+            </CRow>
+          </div>
         </CCol>
       </CRow>
     </div>

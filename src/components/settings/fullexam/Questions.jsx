@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { CCol, CFormGroup, CInputRadio, CLabel } from '@coreui/react';
+import React from 'react';
 import Question from './Question';
 const Questions = props => {
-  const { numberAnswer = 100 } = props;
+  const { numberAnswer = 25 } = props;
   const buildAnswerSheet = numberAnswer => {
     let answers = [];
     let counter = numberAnswer;
@@ -14,8 +13,8 @@ const Questions = props => {
     return answers;
   };
   return (
-    <div>
-      <div>
+    <div className='answer-column'>
+      <div className='answer-row'>
         <span className='answer-a'>A</span>
         <span className='answer-b'>B</span>
         <span className='answer-c'>C</span>
