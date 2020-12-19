@@ -1,13 +1,15 @@
 import React from 'react';
 import Question from './Question';
 const Questions = props => {
-  const { numberAnswer = 25 } = props;
-  const buildAnswerSheet = numberAnswer => {
+  const buildAnswerSheet = (props) => {
+    const { fromIndex = 1, toIndex = 25 } = props;
+    console.log(props)
     let answers = [];
-    let counter = numberAnswer;
-    while (counter > 0) {
-      answers.unshift(<Question stt={counter} />);
-      counter--;
+    let count = parseInt(fromIndex);
+    let end = parseInt(toIndex);
+    while (count <= end) {
+      answers.push(<Question stt={count} />);
+      count++;
     }
     console.log(answers);
     return answers;
@@ -20,7 +22,7 @@ const Questions = props => {
         <span className='answer-c'> C</span>
         <span className='answer-d'> D</span>
       </div>
-      {buildAnswerSheet(numberAnswer)}
+      {buildAnswerSheet(props)}
     </div>
   );
 };

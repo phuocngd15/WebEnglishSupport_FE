@@ -177,16 +177,16 @@ const DoExam = () => {
             <div className='answer-sheet-header'>LISTENING SECTION</div>
             <CRow className='answer-sheet-column'>
               <CCol md='3'>
-                <Questions />
+                <Questions fromIndex='1' toIndex='25' />
               </CCol>
               <CCol md='3'>
-                <Questions />
+                <Questions fromIndex='26' toIndex='50' />
               </CCol>
               <CCol md='3'>
-                <Questions />
+                <Questions fromIndex='51' toIndex='75' />
               </CCol>
               <CCol md='3'>
-                <Questions />
+                <Questions fromIndex='76' toIndex='100' />
               </CCol>
             </CRow>
           </div>
@@ -196,16 +196,16 @@ const DoExam = () => {
             <div className='answer-sheet-header'>READING SECTION</div>
             <CRow className='answer-sheet-column'>
               <CCol md='3'>
-                <Questions />
+                <Questions fromIndex='101' toIndex='125' />
               </CCol>
               <CCol md='3'>
-                <Questions />
+                <Questions fromIndex='126' toIndex='150' />
               </CCol>
               <CCol md='3'>
-                <Questions />
+                <Questions fromIndex='151' toIndex='175' />
               </CCol>
               <CCol md='3'>
-                <Questions />
+                <Questions fromIndex='176' toIndex='200' />
               </CCol>
             </CRow>
           </div>
