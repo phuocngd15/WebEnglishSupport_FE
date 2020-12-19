@@ -14,11 +14,11 @@ const Questions = props => {
   };
   return (
     <div className='answer-column'>
-      <div className='answer-row'>
-        <span className='answer-a'>A</span>
-        <span className='answer-b'>B</span>
-        <span className='answer-c'>C</span>
-        <span className='answer-d'>D</span>
+      <div className='answer-row answer-abcd'>
+        <span className='answer-a'> A</span>
+        <span className='answer-b'> B</span>
+        <span className='answer-c'> C</span>
+        <span className='answer-d'> D</span>
       </div>
       {buildAnswerSheet(numberAnswer)}
     </div>

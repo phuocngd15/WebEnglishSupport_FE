@@ -21,16 +21,33 @@
   .answer-row {
     display: flex;
     // justify-content: space-evenly;
-    margin: 10px;
+    margin: 5px;
     .answer-row-stt {
-      margin-right: 10px;
+      margin-right: 2px;
     }
   }
 }
-.answer-sheet-header {
-}
+
 .answer-sheet {
   border: 1px solid darkblue;
+  .answer-sheet-header {
+  }
+  .answer-abcd{
+    margin-left: 1rem;
+    .answer-a,.answer-b,.answer-c,.answer-d{
+      margin-left: 5px;
+    }
+  }
+ 
+  .answer-row{
+    .answer-item{
+      margin-left: 2px;
+    }
+  }
+  .answer-sheet-column{
+    margin-right: 10px !important;
+    margin-left: -15px !important;
+  }
 }
 .radio-btn {
   margin-right: 10px;

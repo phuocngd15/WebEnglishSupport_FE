@@ -30,10 +30,12 @@ const DoExam = () => {
   }
 
   function previousPage() {
+    window.scrollTo(180, 180);
     changePage(-1);
   }
 
   function nextPage() {
+    window.scrollTo(180, 180);
     changePage(1);
   }
 
@@ -173,7 +175,7 @@ const DoExam = () => {
         <CCol md='3' sm='12'>
           <div className='answer-sheet'>
             <div className='answer-sheet-header'>LISTENING SECTION</div>
-            <CRow>
+            <CRow className='answer-sheet-column'>
               <CCol md='3'>
                 <Questions />
               </CCol>
@@ -192,7 +194,7 @@ const DoExam = () => {
         <CCol md='3' sm='12'>
           <div className='answer-sheet'>
             <div className='answer-sheet-header'>READING SECTION</div>
-            <CRow>
+            <CRow className='answer-sheet-column'>
               <CCol md='3'>
                 <Questions />
               </CCol>
