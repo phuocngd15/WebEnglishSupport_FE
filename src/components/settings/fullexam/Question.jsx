@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CCol, CFormGroup, CLabel, CRow } from '@coreui/react';
 import { cloneDeep } from 'lodash';
 import { useDispatch } from 'react-redux';
@@ -18,12 +18,15 @@ const Question = props => {
     let newState = cloneDeep(answer);
     newState.forEach(item => {
       if (item.id === id) {
-        item.isChose = true;
+        item.isChose = !item.isChose;
       } else {
         item.isChose = false;
       }
     });
+    const dapAn = newState.filter(e => e.isChose === true);
+    console.log('dapan',dapAn)
     dispatch(chooseAnswer({ stt: stt, dapAn: id }));
+
     setAnswer(newState);
   };
 

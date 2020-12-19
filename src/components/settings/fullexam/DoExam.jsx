@@ -17,10 +17,7 @@ const DoExam = () => {
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-  const [time, setTime] = useState(false);
 
-  // luu state.dapan
-  /*When document gets loaded successfully*/
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
     setPageNumber(1);
@@ -39,101 +36,16 @@ const DoExam = () => {
     changePage(1);
   }
 
-  // counter
-  const handleCounter = e => {
-    e.preventDefault();
-    setTime({ time: true });
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-  };
-
   return (
     <div className='doExam-main'>
       <CRow>
-        <CCol>
-          <div className='doExam-main-intro'>
-            <h3>Mark your answer on your answer sheet:</h3>
-            <p>
-              Please refrain from replaying the audio, you can only listen one
-              time when in real exam.
-            </p>
-            <p>Audio:</p>
-            {/* <div className='Pause-Play-Button' onClick={handlePausePlayClick}>
-          {isPlay ? (
-            <Icon path={mdiPause} title='Pause' size={1} horizontal vertical />
-          ) : (
-            <Icon
-              path={mdiTriangle}
-              title='Play'
-              size={1}
-              horizontal
-              vertical
-              rotate={270}
-            />
-          )}
-        </div> */}
-            <TimeSlider
-              axis='x'
-              // xmax={duration}
-              // x={currentTime}
-              // onChange={handleTimeSliderChange}
-              styles={{
-                track: {
-                  backgroundColor: '#e3e3e3',
-                  height: '2px'
-                },
-                active: {
-                  backgroundColor: '#333',
-                  height: '2px'
-                },
-                thumb: {
-                  marginTop: '-3px',
-                  width: '8px',
-                  height: '8px',
-                  backgroundColor: '#333',
-                  borderRadius: 0
-                }
-              }}
-            />
-          </div>
-        </CCol>
-        <CCol md='4'>
-          {time ? (
-            <>
-              <Countdown
-                className='doExam-main-counter'
-                date={Date.now() + 7200000}
-              />
-              <CButton
-                variant='outline'
-                color='danger'
-                size='lg'
-                className='intro-container-btn-start'
-                onClick={handleSubmit}>
-                SUBMIT
-              </CButton>
-            </>
-          ) : (
-            <CButton
-              variant='outline'
-              color='success'
-              size='lg'
-              className='intro-container-btn-start'
-              onClick={handleCounter}>
-              START
-            </CButton>
-          )}
-        </CCol>
-      </CRow>
-      <CRow>
-        <CCol md='6' sm='12'>
+        <CCol md='6' sm='12' className='exam'>
           <Document
             className='doExam-exam'
             file={url}
             onLoadSuccess={onDocumentLoadSuccess}>
-            <Page scale={1.2} pageNumber={pageNumber} />
+          
+            <Page scale={1.2} pageNumber={pageNumber} height={800} />
 
             <div>
               <div className='pagec'>
@@ -172,47 +84,95 @@ const DoExam = () => {
             </div>
           </Document>
         </CCol>
-        <CCol md='3' sm='12'>
-          <div className='answer-sheet'>
-            <div className='answer-sheet-header'>LISTENING SECTION</div>
-            <CRow className='answer-sheet-column'>
-              <CCol md='3'>
-                <Questions fromIndex='1' toIndex='25' />
-              </CCol>
-              <CCol md='3'>
-                <Questions fromIndex='26' toIndex='50' />
-              </CCol>
-              <CCol md='3'>
-                <Questions fromIndex='51' toIndex='75' />
-              </CCol>
-              <CCol md='3'>
-                <Questions fromIndex='76' toIndex='100' />
-              </CCol>
-            </CRow>
+        <CCol md='6' sm='12'>
+          <div className='doExam-main-intro'>
+            <h3>Mark your answer on your answer sheet</h3>
+            <div><OClock /></div>
           </div>
-        </CCol>
-        <CCol md='3' sm='12'>
-          <div className='answer-sheet'>
-            <div className='answer-sheet-header'>READING SECTION</div>
-            <CRow className='answer-sheet-column'>
-              <CCol md='3'>
-                <Questions fromIndex='101' toIndex='125' />
-              </CCol>
-              <CCol md='3'>
-                <Questions fromIndex='126' toIndex='150' />
-              </CCol>
-              <CCol md='3'>
-                <Questions fromIndex='151' toIndex='175' />
-              </CCol>
-              <CCol md='3'>
-                <Questions fromIndex='176' toIndex='200' />
-              </CCol>
-            </CRow>
-          </div>
+          <AnswerSheet />
         </CCol>
       </CRow>
     </div>
   );
 };
 
+const AnswerSheet = () => {
+  return (
+    <CRow>
+      <CCol md='6' sm='12'>
+        <div className='answer-sheet'>
+          <div className='answer-sheet-header'>LISTENING SECTION</div>
+          <CRow className='answer-sheet-column'>
+            <CCol md='3' sm='3'>
+              <Questions fromIndex='1' toIndex='25' />
+            </CCol>
+            <CCol md='3' sm='3'>
+              <Questions fromIndex='26' toIndex='50' />
+            </CCol>
+            <CCol md='3' sm='3'>
+              <Questions fromIndex='51' toIndex='75' />
+            </CCol>
+            <CCol md='3' sm='3'>
+              <Questions fromIndex='76' toIndex='100' />
+            </CCol>
+          </CRow>
+        </div>
+      </CCol>
+      <CCol md='6' sm='12'>
+        <div className='answer-sheet'>
+          <div className='answer-sheet-header'>READING SECTION</div>
+          <CRow className='answer-sheet-column'>
+            <CCol md='3' sm='3'>
+              <Questions fromIndex='101' toIndex='125' />
+            </CCol>
+            <CCol md='3' sm='3'>
+              <Questions fromIndex='126' toIndex='150' />
+            </CCol>
+            <CCol md='3' sm='3'>
+              <Questions fromIndex='151' toIndex='175' />
+            </CCol>
+            <CCol md='3' sm='3'>
+              <Questions fromIndex='176' toIndex='200' />
+            </CCol>
+          </CRow>
+        </div>
+      </CCol>
+    </CRow>
+  );
+};
+const OClock = () => {
+  const [isStart, setIsStart] = useState(false);
+  const handleSubmit = () => {
+    setIsStart(false);
+  };
+  const renderBtn = isStart => {
+    const btn = isStart ? (
+      <>
+        <Countdown
+          className='doExam-main-counter'
+          date={Date.now() + 7200000}
+        />
+        <CButton
+          variant='outline'
+          color='danger'
+          size='lg'
+          className='intro-container-btn-start'
+          onClick={handleSubmit}>
+          Nộp bài
+        </CButton>
+      </>
+    ) : (
+      <CButton
+        variant='outline'
+        color='success'
+        size='lg'
+        className='intro-container-btn-start'
+        onClick={() => setIsStart(true)}>
+        Bắt đầu
+      </CButton>
+    );
+    return btn;
+  };
+  return <>{renderBtn(isStart)}</>;
+};
 export default DoExam;

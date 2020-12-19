@@ -21,27 +21,40 @@
   .answer-row {
     display: flex;
     // justify-content: space-evenly;
-    margin: 5px;
+    margin: 2px;
     .answer-row-stt {
       margin-right: 2px;
     }
+  }
+  .exam{
+    margin: 0;
   }
 }
 
 .answer-sheet {
   border: 1px solid darkblue;
   .answer-sheet-header {
+    font-size: 15px;
+    font-weight: bolder;
   }
   .answer-abcd{
     margin-left: 1rem;
     .answer-a,.answer-b,.answer-c,.answer-d{
+      font-weight: bolder;
       margin-left: 5px;
+    }
+    &.modified{
+      padding-left: 10px;
     }
   }
  
   .answer-row{
+    font-size: 12px;
     .answer-item{
-      margin-left: 2px;
+      margin-left: 1px;
+    }
+    .answer-row-stt{
+      font-weight: bolder;
     }
   }
   .answer-sheet-column{
