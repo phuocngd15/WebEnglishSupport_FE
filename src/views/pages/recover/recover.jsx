@@ -15,7 +15,7 @@ import {
 import CIcon from '@coreui/icons-react';
 import { signinRequest } from '../../../Store/slice/authenticationSlice';
 import useEncrypt from '../../../components/hook/useEncrypt';
-import { getValueRef } from '../../../Share/func';
+import { getValueRef } from '../../../share/func';
 
 const Recover = () => {
   const dispatch = useDispatch();

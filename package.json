@@ -54,6 +54,7 @@
     "react-router-dom": "^5.2.0",
     "react-storage-hooks": "^4.0.1",
     "redux": "4.0.5",
+    "sweetalert2": "^10.12.5",
     "use-sound": "^2.0.1"
   },
   "devDependencies": {

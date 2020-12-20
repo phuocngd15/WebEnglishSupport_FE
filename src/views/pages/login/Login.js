@@ -19,7 +19,7 @@ import {
 import CIcon from '@coreui/icons-react';
 import { signIn } from '../../../Store/slice/authenticationSlice';
 import useEncrypt from '../../../components/hook/useEncrypt';
-import { getValueRef } from '../../../Share/func';
+import { getValueRef } from '../../../share/func';
 
 const Login = () => {
   let history = useHistory();
