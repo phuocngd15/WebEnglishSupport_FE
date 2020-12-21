@@ -11,17 +11,20 @@ import {
   CInputGroup,
   CInputGroupPrepend,
   CInputGroupText,
-  CRow
+  CRow,
+  CCardHeader,
+  CCardFooter
 } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
 import { useDispatch } from 'react-redux';
 import useEncrypt from '../../../components/hook/useEncrypt';
 import { signupRequest } from '../../../Store/slice/authenticationSlice';
 import { axiosPost } from '../../../axios/axios';
-
+import { useHistory } from 'react-router-dom'
 const Register = () => {
   const [mahoa] = useEncrypt();
   const dispatch = useDispatch();
+  const history = useHistory();
   let usernameRef = useRef();
   let emailRef = useRef();
   let passRef = useRef();
@@ -43,8 +46,17 @@ const Register = () => {
       password: mahoa(passRef.current.value),
       url: 'http://localhost:9999/signup'
     };
+    
     const res = await axiosPost(filterModel);
+<<<<<<< HEAD
 
+=======
+    if (res) {
+      history.push('/login')
+    } else {
+      alert('tao khong thanh cong');
+    }
+>>>>>>> Truc
     // dispatch(signupRequest(filterModel))
   };
   return (
@@ -53,10 +65,12 @@ const Register = () => {
         <CRow className='justify-content-center'>
           <CCol md='7' lg='5' xl='4'>
             <CCard className='p-4'>
+              <CCardHeader className='ccardheader'>
+                <h2>Register</h2>
+                <p>Create your account</p>
+              </CCardHeader>
               <CCardBody>
                 <CForm>
-                  <h1>Register</h1>
-                  <p className='text-muted'>Create your account</p>
                   <CInputGroup className='mb-3'>
                     <CInputGroupPrepend>
                       <CInputGroupText>
@@ -105,6 +119,62 @@ const Register = () => {
                       Create Account
                     </CButton>
                   </div>
+                  {/* <CContainer className='create-food-content'>
+                    <CRow className='field'>
+                      <CCol lg='10'>
+                        <CRow>
+                          <CCol lg='5' className='pt-2'>
+                            Tên món ăn
+                          </CCol>
+                          <CCol>
+                            <input
+                              type='text'
+                              placeholder='Nhập tên thức ăn'
+                              className='inp'
+                              style={{ width: '100%' }}
+                              required
+                            />
+                          </CCol>
+                        </CRow>
+                      </CCol>
+                    </CRow>
+                    <CRow className='field'>
+                      <CCol lg='10'>
+                        <CRow>
+                          <CCol lg='5' className='pt-2'>
+                            Giá vốn
+                          </CCol>
+                          <CCol>
+                            <input
+                              type='text'
+                              placeholder='Nhập giá vốn'
+                              className='inp'
+                              style={{ width: '100%' }}
+                              required
+                            />
+                          </CCol>
+                        </CRow>
+                      </CCol>
+                    </CRow>
+                    <CRow className='field'>
+                      <CCol lg='10'>
+                        <CRow>
+                          <CCol lg='5' className='pt-2'>
+                            Giá bán
+                          </CCol>
+                          <CCol>
+                            <input
+                              type='text'
+                              placeholder='Nhập giá bán'
+                              className='inp'
+                              style={{ width: '100%' }}
+                              required
+                            />
+                          </CCol>
+                        </CRow>
+                      </CCol>
+                    </CRow>
+                  </CContainer> */}
                 </CForm>
               </CCardBody>
             </CCard>
