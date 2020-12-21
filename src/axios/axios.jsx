@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { StatusMiddleWare } from '../Share/Alert';
+import { StatusMiddleWare } from '../share/Alert';
 
 const axiosGet = async props => {
   const { url, ...rest } = props;

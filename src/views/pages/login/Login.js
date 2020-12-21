@@ -70,6 +70,7 @@ const Login = () => {
                         ref={emailRef}
                         placeholder='email@gmail.com'
                         autoComplete='email'
+                        required
                       />
                     </CInputGroup>
                     <CInputGroup className='mb-3'>
@@ -83,6 +84,7 @@ const Login = () => {
                         ref={passRef}
                         placeholder='Password'
                         autoComplete='current-password'
+                        required
                       />
                     </CInputGroup>
                     <div className='login-footer'>
