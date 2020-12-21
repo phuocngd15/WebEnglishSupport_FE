@@ -47,7 +47,7 @@ const App = () => {
           </Route>
           <Route path='/' name='Home'>
             {/* <TheLayout /> */}
-            {isLogin ? <TheLayout /> : <Redirect to='/intro' />}
+            {isLogin ? <TheLayout /> : <Redirect to='/login' />}
           </Route>
         </Switch>
       </React.Suspense>
