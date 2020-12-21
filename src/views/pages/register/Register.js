@@ -44,11 +44,7 @@ const Register = () => {
       url: 'http://localhost:9999/signup'
     };
     const res = await axiosPost(filterModel);
-    if (res) {
-      alert('tao thanh cong');
-    } else {
-      alert('tao khong thanh cong');
-    }
+
     // dispatch(signupRequest(filterModel))
   };
   return (
