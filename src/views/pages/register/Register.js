@@ -37,10 +37,11 @@ const Register = () => {
       password: mahoa(getValueRef(passRef)),
       url: 'http://localhost:9999/signup'
     };
-    
-    const isCall = fullname && email && password;
+    const isCall =
+      filterModel.fullname && filterModel.email && filterModel.password;
+    const res = isCall && (await axiosPost(filterModel));
     if (res) {
-      history.push('/login')
+      history.push('/login');
     }
   };
   return (
