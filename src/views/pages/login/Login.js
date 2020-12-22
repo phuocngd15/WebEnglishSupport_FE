@@ -56,8 +56,8 @@ const Login = () => {
               <CCard className='p-4'>
                 <CCardBody>
                   <CForm>
-                    <h1>Login</h1>
-                    <p className='text-muted'>Sign In to your account</p>
+                    <h1>Đăng nhập</h1>
+                    <p className='text-muted'></p>
                     <CInputGroup className='mb-3'>
                       <CInputGroupPrepend>
                         <CInputGroupText>
@@ -81,7 +81,7 @@ const Login = () => {
                       <input
                         type='password'
                         ref={passRef}
-                        placeholder='Password'
+                        placeholder='******'
                         autoComplete='current-password'
                         required
                       />
@@ -89,11 +89,11 @@ const Login = () => {
                     <div className='login-footer'>
                       <Link to='/recover'>
                         <CButton color='link' onClick={handleRecoverPass}>
-                          Forgot password?
+                          Quên mật khẩu?
                         </CButton>
                       </Link>
                       <CButton onClick={e => handelLogin(e)} color='success'>
-                        Login
+                        Đăng nhập
                       </CButton>
                     </div>
                   </CForm>

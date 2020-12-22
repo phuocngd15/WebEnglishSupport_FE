@@ -1,5 +1,5 @@
 import { CCol, CRow, CButton } from '@coreui/react';
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import rc from './LC.pdf';
 import Questions from './Questions';
@@ -14,11 +14,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const DoExam = props => {
   // pdf
-  // const url = rc;
-
-  const url = useSelector(state => state.doExam.file);
-  //pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-  pdfjs.GlobalWorkerOptions.workerSrc = url;
+  const url = rc;
+  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 

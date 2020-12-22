@@ -25,6 +25,7 @@ import {
 } from './index';
 import { showHideSidebar } from '../Store/slice/sidebarSlice';
 import TheHeaderTestDropdown from './TheHeaderTestDropdown';
+import DeThiDropDown from './DeThiDropDown';
 
 const TheHeader = () => {
   const dispatch = useDispatch();
@@ -48,12 +49,20 @@ const TheHeader = () => {
     <CHeader withSubheader id='modified-header' className='container-fluid'>
       <CHeaderBrand className='mx-auto d-lg-none' to='/'>
         {/* config icon brand here */}
-        <CIcon name='logo' height='48' alt='Logo' />
+        {/*  <CIcon name='logo' height='48' alt='Logo' /> */}
+        <img
+          src='image/logo.png'
+          width='50'
+          height='50'
+          alt=''
+          loading='lazy'
+          className='ml-2'
+        />
       </CHeaderBrand>
       {exam ? (
         <>
           <CHeaderNav className='d-md-down-none mr-auto header'>
-            <CLink className='navbar-brand logo' to='#'>
+            <CLink className='navbar-brand logo' to='/'>
               <img
                 src='image/logo.png'
                 width='50'
@@ -71,7 +80,7 @@ const TheHeader = () => {
       ) : (
         <>
           <CHeaderNav className='d-md-down-none mr-auto header'>
-            <CLink className='navbar-brand logo' to='#'>
+            <CLink className='navbar-brand logo' to='/'>
               <img
                 src='image/logo.png'
                 width='50'
@@ -82,22 +91,19 @@ const TheHeader = () => {
               />
             </CLink>
             <CHeaderNavItem className='px-3'>
-              <CHeaderNavLink to='/dashboard'>Đề thi thử</CHeaderNavLink>
+              <DeThiDropDown />
             </CHeaderNavItem>
-            <CHeaderNavItem className='px-3'>
+           {/*  <CHeaderNavItem className='px-3'>
               <CHeaderNavLink to='/ThangDiemToeic'>
                 Cách tính điểm TOEIC
               </CHeaderNavLink>
-            </CHeaderNavItem>
-            <CHeaderNavItem className='px-3'>
-              <CHeaderNavLink to='/#'>Tài liệu tham khảo</CHeaderNavLink>
-            </CHeaderNavItem>
+            </CHeaderNavItem> */}
           </CHeaderNav>
           <CHeaderNav className='px-3'>
-            <TheHeaderTestDropdown></TheHeaderTestDropdown>
-            <TheHeaderDropdownNotif />
-            <TheHeaderDropdownTasks />
-            <TheHeaderDropdownMssg />
+            {/* <TheHeaderTestDropdown></TheHeaderTestDropdown>
+           <TheHeaderDropdownNotif />
+            <TheHeaderDropdownTasks /> 
+            <TheHeaderDropdownMssg /> */}
             <TheHeaderDropdown />
           </CHeaderNav>
           <CSubheader

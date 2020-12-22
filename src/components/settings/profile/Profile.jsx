@@ -1,122 +1,213 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { validate } from 'email-validator';
+import useEncrypt from '../../hook/useEncrypt';
+import { axiosPost } from '../../../axios/axios';
 import {
   CButton,
   CCard,
   CCardBody,
-  CCardFooter,
   CCardHeader,
   CCol,
-  CCollapse,
-  CDropdownItem,
-  CDropdownMenu,
-  CDropdownToggle,
-  CFade,
   CForm,
   CFormGroup,
-  CFormText,
-  CValidFeedback,
-  CInvalidFeedback,
-  CTextarea,
-  CInput,
-  CInputFile,
-  CInputCheckbox,
-  CInputRadio,
-  CInputGroup,
-  CInputGroupAppend,
-  CInputGroupPrepend,
-  CDropdown,
-  CInputGroupText,
   CLabel,
-  CSelect,
+  CContainer,
+  CLink,
+  CListGroup,
+  CListGroupItem,
   CRow
 } from '@coreui/react';
+import { mdiAccountEditOutline } from '@mdi/js';
+import Icon from '@mdi/react';
 import CIcon from '@coreui/icons-react';
+import { Link } from 'react-router-dom';
+import Axios from 'axios';
+import { getValueRef } from '../../../share/func';
+import { StatusMiddleWare } from '../../../share/Alert';
+const GeneralEdit = () => {
+  return (
+    <>
+      <OneItemCanEdit
+        keyQuery='fullname'
+        label='Họ và tên'
+        placeholder='nguyen van a'
+        type='text'
+        apiPostURL={'http://localhost:9999/api/profile/name'}
+        apiGetURL={'http://localhost:9999/api/profile'}
+      />
+      <OneItemCanEdit
+        label='SĐT'
+        keyQuery='phone'
+        placeholder='0123456789'
+        type='text'
+        apiPostURL={'http://localhost:9999/api/profile/phone'}
+        apiGetURL={'http://localhost:9999/api/profile'}
+      />
+    </>
+  );
+};
+const Password = () => {
+  return (
+    <OneItemCanEdit label='Mật khẩu' placeholder='*******' type='password' />
+  );
+};
 
-const Profile = () => {
+const OneItemCanEdit = props => {
+  const email = useSelector(state => state.authentication.loginState.email);
+  const {
+    label,
+    placeholder,
+    type,
+    apiPostURL,
+    apiGetURL,
+    needEncrypt = false,
+    keyQuery
+  } = props;
+  const dispatch = useDispatch();
+  const [isViewMode, setIsViewMode] = useState(true);
+  const [mahoa] = useEncrypt();
+  const [value, setValue] = useState(placeholder);
+
+  const inputRef = useRef();
+
+  const handleSave = async () => {
+    const model = {
+      email: email,
+      value: needEncrypt ? mahoa(getValueRef(inputRef)) : getValueRef(inputRef)
+    };
+    const res = await Axios.post(apiPostURL, model);
+    StatusMiddleWare(res.status, res.data) && setIsViewMode(true);
+  };
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const response = await Axios.get(apiGetURL, {
+        params: {
+          email
+        }
+      });
+      if (!cancelled) {
+        const { data } = response;
+        setValue(data[keyQuery]);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [apiGetURL, email, keyQuery, placeholder]);
+  const handleChange = e => {
+    setValue();
+  };
+  const renderBtn = isShow => {
+    if (isShow)
+      return (
+        <>
+          <CButton
+            type='submit'
+            size='l'
+            className='item-btn-success'
+            color='primary'
+            variant='outline'
+            onClick={handleSave}>
+            Lưu
+          </CButton>
+          <CButton
+            type='submit'
+            size='l'
+            variant='outline'
+            className='item-btn-cancel'
+            color='dark'
+            onClick={() => setIsViewMode(true)}>
+            Hủy
+          </CButton>
+        </>
+      );
+    return null;
+  };
+  return (
+    <CRow className='item'>
+      <CCol xs='12' md='2'>
+        <CLabel className='item-label'>{label}</CLabel>
+      </CCol>
+      <CCol xs='12' md='10'>
+        <input
+          ref={inputRef}
+          type={type}
+          //  placeholder={placeholder}
+          value={value}
+          disabled={isViewMode}
+          onChange={e => handleChange(e.target.value)}
+        />
+        <span className='item-control'>
+          {renderBtn(!isViewMode)}
+          {isViewMode && (
+            <span
+              className='item-btnEdit'
+              size='l'
+              color='primary'
+              onClick={() => setIsViewMode(false)}
+              variant='outline'>
+              Chỉnh sửa
+            </span>
+          )}
+        </span>
+      </CCol>
+    </CRow>
+  );
+};
+
+const ConfigList = () => {
+  const listTabProfile = [
+    {
+      id: 0,
+      label: 'Chung',
+      childComponent: <GeneralEdit />
+    },
+    {
+      id: 1,
+      label: 'Bảo mật và đăng nhập',
+      childComponent: <Password />
+    }
+  ];
+  const [activeTab, setActiveTab] = React.useState(listTabProfile[0].id);
+
+  const handleActiveTab = id => {
+    setActiveTab(id);
+  };
   return (
     <div>
-      <CCol xs='12' sm='5'>
-        <CCard>
-          <CCardHeader>Thông tin cá nhân</CCardHeader>
-          <CCardBody>
-            <CFormGroup row className='my-0'>
-              <CCol xs='6'>
-                <CFormGroup>
-                  <CLabel htmlFor='city'>Họ tên</CLabel>
-                  <CInput id='city' placeholder='Enter your city' />
-                </CFormGroup>
-              </CCol>
-              <CCol xs='6'>
-                <CFormGroup>
-                  <CLabel htmlFor='postal-code'>Email</CLabel>
-                  <CInput id='postal-code' placeholder='Postal Code' />
-                </CFormGroup>
-              </CCol>
-            </CFormGroup>
-            <CFormGroup row className='my-0'>
-              <CCol xs='6'>
-                <CFormGroup>
-                  <CLabel htmlFor='city'>Giói tính</CLabel>
-                </CFormGroup>
-                <CCol md='8'>
-                  <CFormGroup variant='custom-radio' inline>
-                    <CInputRadio
-                      custom
-                      id='inline-nam'
-                      name='inline-radios'
-                      value='option1'
-                    />
-                    <CLabel variant='custom-checkbox' htmlFor='inline-nam'>
-                      Nam
-                    </CLabel>
-                  </CFormGroup>
-                  <CFormGroup variant='custom-radio' inline>
-                    <CInputRadio
-                      custom
-                      id='inline-nu'
-                      name='inline-radios'
-                      value='option2'
-                    />
-                    <CLabel variant='custom-checkbox' htmlFor='inline-nu'>
-                      Nữ
-                    </CLabel>
-                  </CFormGroup>
-                </CCol>
-              </CCol>
-              <CCol xs='6'>
-                <CFormGroup>
-                  <CLabel htmlFor='postal-code'> Mật khẩu</CLabel>
-                  <CInput id='postal-code' placeholder='Postal Code' />
-                </CFormGroup>
-              </CCol>
-            </CFormGroup>
-            <CFormGroup row className='my-0'>
-              <CCol xs='6'>
-                <CFormGroup>
-                  <CLabel htmlFor='city'>Số điện thoại</CLabel>
-                  <CInput id='city' placeholder='Enter your city' />
-                </CFormGroup>
-              </CCol>
-              <CCol xs='6'>
-                <CFormGroup>
-                  <CLabel htmlFor='postal-code'>Level</CLabel>
-                  <CInput id='postal-code' placeholder='Postal Code' />
-                </CFormGroup>
-              </CCol>
-            </CFormGroup>
-            <CFormGroup row className='my-0'>
-              <CCol xs='6'>
-                <CFormGroup>
-                  <CLabel htmlFor='city'>Ngày đăng ký</CLabel>
-                  <CInput id='city' placeholder='Enter your city' />
-                </CFormGroup>
-              </CCol>
-            </CFormGroup>
-          </CCardBody>
-        </CCard>
-      </CCol>
+      <CRow>
+        <CCol sm='12' md='4' className='profile-left'>
+          <div className='profile-nav-header'>Cài đặt</div>
+          <CListGroup className='profile-nav-list'>
+            {listTabProfile.map(item => {
+              return (
+                <CListGroupItem
+                  key={item.id}
+                  onClick={() => handleActiveTab(item.id)}
+                  className={`${activeTab === item.id ? 'active-tab' : ''}`}>
+                  {item.label}
+                </CListGroupItem>
+              );
+            })}
+          </CListGroup>
+        </CCol>
+        <CCol sm='12' md='8' className='profile-right'>
+          {listTabProfile.map(item => {
+            return (
+              activeTab === item.id && (
+                <div key={item.id}>{item.childComponent}</div>
+              )
+            );
+          })}
+        </CCol>
+      </CRow>
     </div>
   );
 };
 
-export default Profile;
+const Profile2 = () => {
+  return <ConfigList />;
+};
+export default Profile2;

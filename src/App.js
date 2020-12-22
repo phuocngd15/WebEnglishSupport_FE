@@ -46,7 +46,7 @@ const App = () => {
             <Recover />
           </Route>
           <Route path='/' name='Home'>
-            {isLogin ? <TheLayout /> : <Redirect to='/login' />}
+            {isLogin ? <TheLayout /> : <Redirect to='/intro' />}
           </Route>
         </Switch>
       </React.Suspense>

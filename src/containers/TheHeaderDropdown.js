@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { useHistory } from 'react-router-dom';
 import {
   CBadge,
   CDropdown,
@@ -17,9 +17,14 @@ import { logOut } from '../Store/slice/authenticationSlice';
 
 const TheHeaderDropdown = () => {
   const dispatch = useDispatch();
+  const { isLogin } = useSelector(state => state.authentication);
+  let history = useHistory();
 
   const handleLogOut = () => {
     dispatch(logOut());
+  };
+  const handleRecoverPass = () => {
+    history.push('/ThongTinCaNhan');
   };
   return (
     <CDropdown inNav className='c-header-nav-items mx-2' direction='down'>
@@ -36,32 +41,11 @@ const TheHeaderDropdown = () => {
         <CDropdownItem header tag='div' color='light' className='text-center'>
           <strong>Account</strong>
         </CDropdownItem>
-        <CDropdownItem header tag='div' color='light' className='text-center'>
-          <strong>Settings</strong>
-        </CDropdownItem>
-        <CDropdownItem>
-          <CLink to="/ThongTinCaNhan">
-            <CIcon name='cil-user' className='mfe-2' />
+        <CDropdownItem
+          className='header-dropdown-profile'
+          onClick={handleRecoverPass}>
+          <CIcon name='cil-user' className='mfe-2' />
           Profile
-          </CLink>
-        </CDropdownItem>
-        <CDropdownItem>
-          <CIcon name='cil-settings' className='mfe-2' />
-          Settings
-        </CDropdownItem>
-        <CDropdownItem>
-          <CIcon name='cil-credit-card' className='mfe-2' />
-          Payments
-          <CBadge color='secondary' className='mfs-auto'>
-            42
-          </CBadge>
-        </CDropdownItem>
-        <CDropdownItem>
-          <CIcon name='cil-file' className='mfe-2' />
-          Projects
-          <CBadge color='primary' className='mfs-auto'>
-            42
-          </CBadge>
         </CDropdownItem>
         <CDropdownItem divider />
         <CDropdownItem onClick={handleLogOut}>
