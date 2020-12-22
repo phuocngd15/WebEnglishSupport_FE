@@ -20,7 +20,7 @@ import { useDispatch } from 'react-redux';
 import useEncrypt from '../../../components/hook/useEncrypt';
 import { signupRequest } from '../../../Store/slice/authenticationSlice';
 import { axiosPost } from '../../../axios/axios';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 const Register = () => {
   const [mahoa] = useEncrypt();
   const dispatch = useDispatch();
@@ -50,10 +50,7 @@ const Register = () => {
     const res = await axiosPost(filterModel);
     if (res) {
       history.push('/login')
-    } else {
-      alert('tao khong thanh cong');
     }
-    // dispatch(signupRequest(filterModel))
   };
   return (
     <div className='c-app c-default-layout flex-row align-items-center'>

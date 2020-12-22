@@ -3,7 +3,6 @@ import { StatusMiddleWare } from '../share/Alert';
 
 const axiosGet = async props => {
   const { url, ...rest } = props;
-  console.log(props);
   let response;
   try {
     response = await axios.get(url, {

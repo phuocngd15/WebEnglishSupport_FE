@@ -98,7 +98,7 @@ const routes = [
     component: ToeicScale
   },
   {
-    path: '/BauDauThi/:id',
+    path: '/BauDauThi',
     name: 'Bắt đầu thi',
     component: intro
   },

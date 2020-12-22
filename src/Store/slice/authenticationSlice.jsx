@@ -5,13 +5,11 @@ import { StatusMiddleWare } from '../../share/Alert';
 
 const signIn = createAsyncThunk('account/signin', async model => {
   const response = await axiosPost(model);
-  console.log(response);
 
   return response;
 });
 const signUP = createAsyncThunk('account/signup', async model => {
   const response = await axiosPost(model);
-  console.log(response);
   return response;
 });
 

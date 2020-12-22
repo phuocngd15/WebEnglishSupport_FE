@@ -24,14 +24,12 @@ const Question = props => {
       }
     });
     const dapAn = newState.filter(e => e.isChose === true);
-    console.log('dapan',dapAn)
     dispatch(chooseAnswer({ stt: stt, dapAn: id }));
 
     setAnswer(newState);
   };
 
   const buildAnswerRow = answer => {
-    console.log('answer', answer);
     const answerHTML = answer.map(item => {
       return (
         <input

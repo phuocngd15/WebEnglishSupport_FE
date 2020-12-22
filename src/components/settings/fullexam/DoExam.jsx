@@ -10,11 +10,15 @@ import audio from './TEST 01.mp3';
 import useSound from 'use-sound';
 import TimeSlider from 'react-input-slider';
 import Countdown from 'react-countdown';
+import { useDispatch, useSelector } from 'react-redux';
 
-const DoExam = () => {
+const DoExam = props => {
   // pdf
-  const url = rc;
-  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+  // const url = rc;
+
+  const url = useSelector(state => state.doExam.file);
+  //pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+  pdfjs.GlobalWorkerOptions.workerSrc = url;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
@@ -44,7 +48,6 @@ const DoExam = () => {
             className='doExam-exam'
             file={url}
             onLoadSuccess={onDocumentLoadSuccess}>
-          
             <Page scale={1.2} pageNumber={pageNumber} height={800} />
 
             <div>
@@ -87,7 +90,9 @@ const DoExam = () => {
         <CCol md='6' sm='12'>
           <div className='doExam-main-intro'>
             <h3>Mark your answer on your answer sheet</h3>
-            <div><OClock /></div>
+            <div>
+              <OClock />
+            </div>
           </div>
           <AnswerSheet />
         </CCol>

@@ -4,10 +4,9 @@ const useStateWithLocalStorage = localStorageKey => {
   const [value, setValue] = useState(
     localStorage.getItem(localStorageKey) || ''
   );
-  console.log('test');
   React.useEffect(() => {
     localStorage.setItem(localStorageKey, value);
-  }, [value]);
+  }, [localStorageKey, value]);
 
   return [value, setValue];
 };
