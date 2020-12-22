@@ -21,6 +21,7 @@ import useEncrypt from '../../../components/hook/useEncrypt';
 import { signupRequest } from '../../../Store/slice/authenticationSlice';
 import { axiosPost } from '../../../axios/axios';
 import { useHistory } from 'react-router-dom';
+import { getValueRef } from '../../../share/func';
 const Register = () => {
   const [mahoa] = useEncrypt();
   const dispatch = useDispatch();
@@ -30,24 +31,14 @@ const Register = () => {
   let passRef = useRef();
 
   const handelCreateAccount = async () => {
-    if (
-      !usernameRef.current.value ||
-      !emailRef.current.value ||
-      !passRef.current.value
-    )
-      return null;
-    if (!validate(emailRef.current.value)) {
-      alert('email invalid');
-      return null;
-    }
     const filterModel = {
-      fullname: mahoa(usernameRef.current.value),
-      email: mahoa(emailRef.current.value),
-      password: mahoa(passRef.current.value),
+      fullname: mahoa(getValueRef(usernameRef)),
+      email: mahoa(getValueRef(emailRef)),
+      password: mahoa(getValueRef(passRef)),
       url: 'http://localhost:9999/signup'
     };
     
-    const res = await axiosPost(filterModel);
+    const isCall = fullname && email && password;
     if (res) {
       history.push('/login')
     }
