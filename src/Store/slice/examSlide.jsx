@@ -32,27 +32,19 @@ const examSlide = createSlice({
     }
   },
   extraReducers: {
-    [getExamsRequest.pending]: (state, action) => {
-      console.log('pending');
-    },
+    [getExamsRequest.pending]: (state, action) => {},
     [getExamsRequest.fulfilled]: (state, action) => {
       state.exams = action.payload;
       state.exam = null;
-      console.log('fulfilled');
     },
     [getExamsRequest.rejected]: (state, action) => {
-      console.log('rejected');
       state.messageLog = 'Cannot get list exams';
     },
-    [getExamRequest.pending]: (state, action) => {
-      console.log('pending');
-    },
+    [getExamRequest.pending]: (state, action) => {},
     [getExamRequest.fulfilled]: (state, action) => {
       state.exam = action.payload;
-      console.log('fulfilled');
     },
     [getExamRequest.rejected]: (state, action) => {
-      console.log('rejected');
       state.messageLog = 'Cannot get exam';
     }
   }

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getExamRequest,
-  getExamsRequest
-} from '../../../Store/slice/examSlide';
+
 import { useParams, useHistory } from 'react-router-dom';
 import { CButton, CContainer, CLink } from '@coreui/react';
+import { getGGExam } from '../../../Store/slice/doExamSlice';
 
 const Intro = () => {
   let id = useParams();
@@ -13,17 +11,20 @@ const Intro = () => {
   const { isLogin } = useSelector(state => state.authentication);
   const [islogin, setIsLogin] = useState(isLogin);
   const dispatch = useDispatch();
-
-  const filterModel = {
+  //old
+  /*   const filterModel = {
     url: `http://localhost:9999/api/fullexam/${id.id}`
+  }; */
+  const filterModel = {
+    url: `http://localhost:9999/api/uploadFile/getOne`,
+    id: `1TuI1WgsC9XmWj4PBSSXVoohdSg1bT3i4`
   };
   useEffect(() => {
     if (islogin) {
-      dispatch(getExamRequest(filterModel));
+      dispatch(getGGExam(filterModel));
     }
-  }, [islogin]);
-  let exam = useSelector(state => state.exam).exam;
-  console.log(exam);
+  }, [dispatch, filterModel, islogin]);
+  //let exam = useSelector(state => state.exam).exam;
 
   return (
     <CContainer className='intro-container'>

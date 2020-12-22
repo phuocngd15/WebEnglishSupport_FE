@@ -18,12 +18,11 @@ const Exams = () => {
   const filterModel = {
     url: 'http://localhost:9999/api/fullexam/'
   };
-  console.log(islogin);
   useEffect(() => {
     if (islogin) {
       dispatch(getExamsRequest(filterModel));
     }
-  }, [islogin]);
+  }, [dispatch, filterModel, islogin]);
   return (
     <Fragment>
       <div className='fullTest-page'>

@@ -3,7 +3,6 @@ import Question from './Question';
 const Questions = props => {
   const buildAnswerSheet = props => {
     const { fromIndex = 1, toIndex = 25 } = props;
-    console.log(props);
     let answers = [];
     let count = parseInt(fromIndex);
     let end = parseInt(toIndex);
@@ -11,12 +10,14 @@ const Questions = props => {
       answers.push(<Question stt={count} />);
       count++;
     }
-    console.log(answers);
     return answers;
   };
   return (
     <div className='answer-column'>
-      <div className={`answer-row answer-abcd ${props.fromIndex >100 ? 'modified' :''}`}>
+      <div
+        className={`answer-row answer-abcd ${
+          props.fromIndex > 100 ? 'modified' : ''
+        }`}>
         <span className='answer-a'> A</span>
         <span className='answer-b'> B</span>
         <span className='answer-c'> C</span>

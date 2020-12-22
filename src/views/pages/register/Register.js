@@ -20,7 +20,7 @@ import { useDispatch } from 'react-redux';
 import useEncrypt from '../../../components/hook/useEncrypt';
 import { signupRequest } from '../../../Store/slice/authenticationSlice';
 import { axiosPost } from '../../../axios/axios';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 const Register = () => {
   const [mahoa] = useEncrypt();
   const dispatch = useDispatch();
@@ -46,17 +46,8 @@ const Register = () => {
       password: mahoa(passRef.current.value),
       url: 'http://localhost:9999/signup'
     };
-    
-    const res = await axiosPost(filterModel);
-<<<<<<< HEAD
 
-=======
-    if (res) {
-      history.push('/login')
-    } else {
-      alert('tao khong thanh cong');
-    }
->>>>>>> Truc
+    const res = await axiosPost(filterModel);
     // dispatch(signupRequest(filterModel))
   };
   return (

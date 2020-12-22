@@ -20,15 +20,9 @@ const sidebarSlice = createSlice({
     }
   },
   extraReducers: {
-    [fetchServer.pending]: (state, action) => {
-      console.log('pending');
-    },
-    [fetchServer.fulfilled]: (state, action) => {
-      console.log('fulfilled');
-    },
-    [fetchServer.rejected]: (state, action) => {
-      console.log('rejected');
-    }
+    [fetchServer.pending]: (state, action) => {},
+    [fetchServer.fulfilled]: (state, action) => {},
+    [fetchServer.rejected]: (state, action) => {}
   }
 });
 const { reducer, actions } = sidebarSlice;
