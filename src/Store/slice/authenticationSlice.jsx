@@ -18,7 +18,7 @@ const authenticationSlice = createSlice({
   initialState: {
     loginState: sessionStorage.getItem('login')
       ? JSON.parse(sessionStorage.getItem('login'))
-      : {},
+      : null,
     isLogin: sessionStorage.getItem('isLogin')
       ? JSON.parse(sessionStorage.getItem('isLogin'))
       : false,
@@ -26,7 +26,7 @@ const authenticationSlice = createSlice({
   },
   reducers: {
     logOut: state => {
-      state.loginState = {};
+      state.loginState = null;
       state.isLogin = false;
       sessionStorage.clear();
     },

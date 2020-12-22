@@ -31,17 +31,20 @@ const Register = () => {
   let passRef = useRef();
 
   const handelCreateAccount = async () => {
+    const fullname = getValueRef(usernameRef);
+    const email = getValueRef(emailRef);
+    const password = getValueRef(passRef);
+    const isCall = fullname && email && password;
     const filterModel = {
-      fullname: mahoa(getValueRef(usernameRef)),
-      email: mahoa(getValueRef(emailRef)),
-      password: mahoa(getValueRef(passRef)),
+      fullname: mahoa(fullname),
+      email: mahoa(email),
+      password: mahoa(password),
       url: 'http://localhost:9999/signup'
     };
-    const isCall =
-      filterModel.fullname && filterModel.email && filterModel.password;
+
     const res = isCall && (await axiosPost(filterModel));
     if (res) {
-      history.push('/login');
+      history.push('/home');
     }
   };
   return (

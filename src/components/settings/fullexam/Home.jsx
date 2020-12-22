@@ -15,14 +15,14 @@ const Exams = () => {
   const [islogin, setIsLogin] = useState(isLogin);
   const exams = useSelector(state => state.exam).exams;
   const dispatch = useDispatch();
-  const filterModel = {
+ /*  const filterModel = {
     url: 'http://localhost:9999/api/fullexam/'
   };
   useEffect(() => {
     if (islogin) {
       dispatch(getExamsRequest(filterModel));
     }
-  }, [dispatch, filterModel, islogin]);
+  }, [dispatch, filterModel, islogin]); */
   return (
     <Fragment>
       <div className='fullTest-page'>
