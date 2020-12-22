@@ -48,15 +48,11 @@ const Register = () => {
     };
     
     const res = await axiosPost(filterModel);
-<<<<<<< HEAD
-
-=======
     if (res) {
       history.push('/login')
     } else {
       alert('tao khong thanh cong');
     }
->>>>>>> Truc
     // dispatch(signupRequest(filterModel))
   };
   return (

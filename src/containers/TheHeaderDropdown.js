@@ -7,9 +7,7 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
-  CHeaderNavItem,
-  CHeaderNavLink,
-  CHeaderNav,
+  CLink,
   CImg
 } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
@@ -42,8 +40,10 @@ const TheHeaderDropdown = () => {
           <strong>Settings</strong>
         </CDropdownItem>
         <CDropdownItem>
-          <CIcon name='cil-user' className='mfe-2' />
+          <CLink to="/ThongTinCaNhan">
+            <CIcon name='cil-user' className='mfe-2' />
           Profile
+          </CLink>
         </CDropdownItem>
         <CDropdownItem>
           <CIcon name='cil-settings' className='mfe-2' />

@@ -5,6 +5,7 @@ const intro = React.lazy(() => import('../components/settings/fullexam/Intro'));
 const doExam = React.lazy(() =>
   import('../components/settings/fullexam/DoExam')
 );
+const profile = React.lazy(() => import('../components/settings/profile/Profile'));
 const ToeicScale = React.lazy(() =>
   import('../components/settings/ToeicScale')
 );
@@ -101,6 +102,7 @@ const routes = [
     name: 'Bắt đầu thi',
     component: intro
   },
+  { path: '/ThongTinCaNhan', name: 'Thông tin cá nhân', component: profile},
   { path: '/doExam', name: 'Làm bài thi', component: doExam },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },
