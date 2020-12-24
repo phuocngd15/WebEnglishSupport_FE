@@ -3,28 +3,30 @@ import { StatusMiddleWare } from '../share/Alert';
 
 const axiosGet = async props => {
   const { url, ...rest } = props;
-  let response;
   try {
-    response = await axios.get(url, {
+    const response = await axios.get(url, {
       params: {
         ...rest
       }
     });
+    const { status, data } = response;
+    return StatusMiddleWare(status, data) && response;
   } catch (error) {
     console.error(error);
+    return null;
   }
-  return StatusMiddleWare(response.status, response.data) && response;
 };
 
 const axiosPost = async props => {
   const { url, ...rest } = props;
-  let response;
   try {
-    response = await axios.post(url, rest);
+    const response = await axios.post(url, rest);
+    const { status, data } = response;
+    return StatusMiddleWare(status, data) && response;
   } catch (error) {
     console.error(error);
+    return null;
   }
-  return StatusMiddleWare(response.status, response.data) && response;
 };
 
 export { axiosGet, axiosPost };

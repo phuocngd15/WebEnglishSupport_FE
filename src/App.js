@@ -46,7 +46,6 @@ const App = () => {
             <Recover />
           </Route>
           <Route path='/' name='Home'>
-            {/* <TheLayout /> */}
             {isLogin ? <TheLayout /> : <Redirect to='/intro' />}
           </Route>
         </Switch>

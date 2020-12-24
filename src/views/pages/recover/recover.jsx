@@ -16,6 +16,7 @@ import CIcon from '@coreui/icons-react';
 import { signinRequest } from '../../../Store/slice/authenticationSlice';
 import useEncrypt from '../../../components/hook/useEncrypt';
 import { getValueRef } from '../../../share/func';
+import Axios from 'axios';
 
 const Recover = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const Recover = () => {
   const mailRef = useRef(null);
   const [encrypt] = useEncrypt();
 
-  const handelRecover = e => {
+  const handelRecover =async e => {
     e.preventDefault();
     const mailEncrypted = encrypt(getValueRef(mailRef.current.value));
 
@@ -32,6 +33,7 @@ const Recover = () => {
       url: 'http://localhost:9999/recover'
     };
     //dispatch(recoverPass(filterModel));
+    const res = await Axios.get('')
   };
 
   return (
@@ -44,8 +46,8 @@ const Recover = () => {
               <CCard className='p-4'>
                 <CCardBody>
                   <CForm>
-                    <h1>Recover password</h1>
-                    <p className='text-muted'>Mail of account</p>
+                    <h1>Khôi phục mật khẩu</h1>
+                    <p className='text-muted'>Email</p>
                     <CInputGroup className='mb-3'>
                       <CInputGroupPrepend>
                         <CInputGroupText>

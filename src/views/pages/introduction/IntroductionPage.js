@@ -20,7 +20,7 @@ const IntroductionPage = () => {
         <div className='introduction-page-footer'>
           <div className='button' id='button-1'>
             <div id='slide'></div>
-            <div onClick={handleRegister}>Register</div>
+            <div onClick={handleRegister}>Đăng ký</div>
           </div>
           <div className='button' id='button-2'>
             <div id='slide'></div>

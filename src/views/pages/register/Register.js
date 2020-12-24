@@ -31,14 +31,17 @@ const Register = () => {
   let passRef = useRef();
 
   const handelCreateAccount = async () => {
+    const fullname = getValueRef(usernameRef);
+    const email = getValueRef(emailRef);
+    const password = getValueRef(passRef);
+    const isCall = fullname && email && password;
     const filterModel = {
-      fullname: mahoa(getValueRef(usernameRef)),
-      email: mahoa(getValueRef(emailRef)),
-      password: mahoa(getValueRef(passRef)),
+      fullname: mahoa(fullname),
+      email: mahoa(email),
+      password: mahoa(password),
       url: 'http://localhost:9999/signup'
     };
-    const isCall =
-      filterModel.fullname && filterModel.email && filterModel.password;
+
     const res = isCall && (await axiosPost(filterModel));
     if (res) {
       history.push('/login');
@@ -51,8 +54,8 @@ const Register = () => {
           <CCol md='7' lg='5' xl='4'>
             <CCard className='p-4'>
               <CCardHeader className='ccardheader'>
-                <h2>Register</h2>
-                <p>Create your account</p>
+                <h2>Đăng ký</h2>
+                <p>Tạo tài khoản</p>
               </CCardHeader>
               <CCardBody>
                 <CForm>
@@ -65,7 +68,7 @@ const Register = () => {
                     <input
                       ref={usernameRef}
                       type='text'
-                      placeholder='Fullname'
+                      placeholder='Họ tên'
                       required
                     />
                   </CInputGroup>
@@ -91,7 +94,7 @@ const Register = () => {
                     <input
                       ref={passRef}
                       type='password'
-                      placeholder='Password'
+                      placeholder='Mật khẩu'
                       autoComplete='new-password'
                       required
                     />
@@ -101,65 +104,9 @@ const Register = () => {
                       color='success'
                       block
                       onClick={handelCreateAccount}>
-                      Create Account
+                      Đăng ký
                     </CButton>
                   </div>
-                  {/* <CContainer className='create-food-content'>
-                    <CRow className='field'>
-                      <CCol lg='10'>
-                        <CRow>
-                          <CCol lg='5' className='pt-2'>
-                            Tên món ăn
-                          </CCol>
-                          <CCol>
-                            <input
-                              type='text'
-                              placeholder='Nhập tên thức ăn'
-                              className='inp'
-                              style={{ width: '100%' }}
-                              required
-                            />
-                          </CCol>
-                        </CRow>
-                      </CCol>
-                    </CRow>
-                    <CRow className='field'>
-                      <CCol lg='10'>
-                        <CRow>
-                          <CCol lg='5' className='pt-2'>
-                            Giá vốn
-                          </CCol>
-                          <CCol>
-                            <input
-                              type='text'
-                              placeholder='Nhập giá vốn'
-                              className='inp'
-                              style={{ width: '100%' }}
-                              required
-                            />
-                          </CCol>
-                        </CRow>
-                      </CCol>
-                    </CRow>
-                    <CRow className='field'>
-                      <CCol lg='10'>
-                        <CRow>
-                          <CCol lg='5' className='pt-2'>
-                            Giá bán
-                          </CCol>
-                          <CCol>
-                            <input
-                              type='text'
-                              placeholder='Nhập giá bán'
-                              className='inp'
-                              style={{ width: '100%' }}
-                              required
-                            />
-                          </CCol>
-                        </CRow>
-                      </CCol>
-                    </CRow>
-                  </CContainer> */}
                 </CForm>
               </CCardBody>
             </CCard>
