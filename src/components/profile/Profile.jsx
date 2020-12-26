@@ -1,6 +1,7 @@
 import React from 'react';
 import { CCol, CListGroup, CListGroupItem, CRow } from '@coreui/react';
 import { OneInput } from './Component/CoreComponent/OneInput';
+import { TwoCheckBox } from './Component/CoreComponent/TwoCheckBox';
 
 const GeneralEdit = () => {
   return (
@@ -19,6 +20,13 @@ const GeneralEdit = () => {
         placeholder='0123456789'
         type='text'
         apiPostURL={'http://localhost:9999/api/profile/phone'}
+        apiGetURL={'http://localhost:9999/api/profile'}
+      />
+      <TwoCheckBox
+        label='Giới tính'
+        keyQuery='gender'
+        placeholder='0123456789'
+        apiPostURL={'http://localhost:9999/api/profile/gender'}
         apiGetURL={'http://localhost:9999/api/profile'}
       />
     </>

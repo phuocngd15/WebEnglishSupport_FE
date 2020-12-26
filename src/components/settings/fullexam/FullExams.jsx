@@ -13,7 +13,6 @@ import Axios from 'axios';
 
 const FullExams = () => {
   const [listFullExam, setListFullExam] = useState([]);
-  const [listMiniExam, setListMiniExam] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,10 +26,6 @@ const FullExams = () => {
           { _id: '123456', title: 'Đề thi số 1' },
           { _id: '123456', title: 'Đề thi số 2' },
           { _id: '123456', title: 'Đề thi số 3' }
-        ]);
-        setListMiniExam([
-          { _id: '123456', title: 'Đề thi số 1' },
-          { _id: '123456', title: 'Đề thi số 2' }
         ]);
       }
     })();
