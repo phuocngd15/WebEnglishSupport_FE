@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { chooseAnswer } from '../../../Store/slice/doExamSlice';
 
 const Question = props => {
-  const { onClickAnswer, stt } = props;
+  const { stt } = props;
   const dispatch = useDispatch();
   const [answer, setAnswer] = useState([
     { id: 1, isChose: false },
@@ -23,9 +23,13 @@ const Question = props => {
         item.isChose = false;
       }
     });
-    const dapAn = newState.filter(e => e.isChose === true);
-    dispatch(chooseAnswer({ stt: stt, dapAn: id }));
+    const newDapAn = newState.filter(e => e.isChose);
 
+    if (newDapAn.length) {
+      dispatch(chooseAnswer({ stt: stt, dapAn: newDapAn[0].id }));
+    } else {
+      dispatch(chooseAnswer({ stt: stt, dapAn: null }));
+    }
     setAnswer(newState);
   };
 

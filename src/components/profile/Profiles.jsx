@@ -14,10 +14,10 @@ import {
   CInputFile
 } from '@coreui/react';
 import { useSelector, useDispatch } from 'react-redux';
-import useEncrypt from '../../hook/useEncrypt';
+import useEncrypt from '../hook/useEncrypt';
 import axios from 'axios';
 import { useEffect } from 'react/cjs/react.development';
-import { getProfile, axiosGet } from '../../../axios/axios';
+import { getProfile, axiosGet } from '../../axios/axios';
 
 const Profiles = () => {
   const [encrypt, giaima] = useEncrypt();

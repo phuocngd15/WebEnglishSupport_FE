@@ -18,10 +18,10 @@ import { logOut } from '../Store/slice/authenticationSlice';
 const TheHeaderDropdown = () => {
   const dispatch = useDispatch();
   const { isLogin } = useSelector(state => state.authentication);
-  const {email} = useSelector(state=> state.authentication).loginState
+  const { email } = useSelector(state => state.authentication).loginState;
   const [encrypt, giaima] = useEncrypt();
-  let  emailEncrypted = giaima((email));
-  var name = emailEncrypted.substring(0, emailEncrypted.lastIndexOf("@"));
+  let emailEncrypted = giaima(email);
+  var name = emailEncrypted.substring(0, emailEncrypted.lastIndexOf('@'));
 
   let history = useHistory();
 
@@ -34,7 +34,7 @@ const TheHeaderDropdown = () => {
   return (
     <CDropdown inNav className='c-header-nav-items mx-2' direction='down'>
       <CDropdownToggle className='c-header-nav-link' caret={false}>
-        {name}
+        <span style={{ fontWeight: 'bolder' }}>{name}</span>
       </CDropdownToggle>
       <CDropdownMenu className='pt-0' placement='bottom-end'>
         <CDropdownItem header tag='div' color='light' className='text-center'>

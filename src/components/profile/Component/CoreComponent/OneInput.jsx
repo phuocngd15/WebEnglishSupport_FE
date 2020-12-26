@@ -2,9 +2,9 @@ import { CButton, CCol, CLabel, CRow } from '@coreui/react';
 import Axios from 'axios';
 import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { StatusMiddleWare } from '../../../../../share/Alert';
-import { getValueRef } from '../../../../../share/func';
-import useEncrypt from '../../../../hook/useEncrypt';
+import { StatusMiddleWare } from '../../../../share/Alert';
+import { getValueRef } from '../../../../share/func';
+import useEncrypt from '../../../hook/useEncrypt';
 
 const OneInput = props => {
   const email = useSelector(state => state.authentication.loginState.email);
