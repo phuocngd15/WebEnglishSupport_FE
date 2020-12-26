@@ -7,7 +7,6 @@ const StatusMiddleWare = (status, data) => {
   if (!infoMessage) {
     return true;
   }
-
   switch (status) {
     case 200:
     case 201:

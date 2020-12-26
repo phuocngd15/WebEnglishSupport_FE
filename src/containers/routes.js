@@ -8,6 +8,9 @@ const intro = React.lazy(() => import('../components/settings/fullexam/Intro'));
 const doExam = React.lazy(() =>
   import('../components/settings/fullexam/DoExam')
 );
+// const profile = React.lazy(() =>
+//   import('../components/settings/profile/Profile')
+// );
 const profile = React.lazy(() =>
   import('../components/settings/profile/Profile')
 );
