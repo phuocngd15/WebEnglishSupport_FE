@@ -12,7 +12,7 @@ const Exam = props => {
         <td>
           <li>
             <CLink to={'/BauDauThi/' + _id} key={_id}>
-              Thi thử TOEIC 2020 - {title}
+              {title}
             </CLink>
           </li>
         </td>

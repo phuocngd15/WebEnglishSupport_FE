@@ -12,7 +12,7 @@ const doExam = React.lazy(() =>
 //   import('../components/settings/profile/Profile')
 // );
 const profile = React.lazy(() =>
-  import('../components/settings/profile/Profile')
+  import('../components/profile/Profile')
 );
 const ToeicScale = React.lazy(() =>
   import('../components/settings/ToeicScale')

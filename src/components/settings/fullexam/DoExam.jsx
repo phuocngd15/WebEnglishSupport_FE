@@ -11,31 +11,35 @@ import useSound from 'use-sound';
 import TimeSlider from 'react-input-slider';
 import Countdown from 'react-countdown';
 import { useDispatch, useSelector } from 'react-redux';
-
+import PlayerAudio, { useAudio } from '../../audio/PlayerAudio';
+import Axios from 'axios';
+import { axiosPost } from '../../../axios/axios';
 const DoExam = props => {
-  // pdf
   const url = rc;
+  const [isPlaying, toggle] = useAudio({ url: audio });
+  // pdf
+
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
-  function onDocumentLoadSuccess({ numPages }) {
+  const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
     setPageNumber(1);
-  }
-  function changePage(offset) {
+  };
+  const changePage = offset => {
     setPageNumber(prevPageNumber => prevPageNumber + offset);
-  }
+  };
 
-  function previousPage() {
+  const previousPage = () => {
     window.scrollTo(180, 180);
     changePage(-1);
-  }
+  };
 
-  function nextPage() {
+  const nextPage = () => {
     window.scrollTo(180, 180);
     changePage(1);
-  }
+  };
 
   return (
     <div className='doExam-main'>
@@ -88,7 +92,7 @@ const DoExam = props => {
           <div className='doExam-main-intro'>
             <h3>Mark your answer on your answer sheet</h3>
             <div>
-              <OClock />
+              <OClock onPlayAudio={toggle} />
             </div>
           </div>
           <AnswerSheet />
@@ -142,38 +146,65 @@ const AnswerSheet = () => {
     </CRow>
   );
 };
-const OClock = () => {
+
+const OClock = props => {
+  const { onPlayAudio } = props;
   const [isStart, setIsStart] = useState(false);
-  const handleSubmit = () => {
+  const examInfo = useSelector(state => state.doExam);
+  const accountLogin = useSelector(state => state.authentication.loginState);
+  const { answerSheet } = examInfo;
+  const { email } = accountLogin;
+
+
+  const handleSubmit = async () => {
     setIsStart(false);
+    onPlayAudio(false);
+    let examResult = {
+      email: email,
+      answerSheet: answerSheet,
+      url: 'http://localhost:9999/ketQuaBaiThi'
+    };
+    // phd submit dethi
+    const res = await axiosPost(examResult);
+  };
+  
+  const handleHetThoiGian = isCompleted => {
+    if (isCompleted) {
+      handleSubmit();
+    }
   };
   const renderBtn = isStart => {
-    const btn = isStart ? (
-      <>
-        <Countdown
-          className='doExam-main-counter'
-          date={Date.now() + 7200000}
-        />
-        <CButton
-          variant='outline'
-          color='danger'
-          size='lg'
-          className='intro-container-btn-start'
-          onClick={handleSubmit}>
-          Nộp bài
-        </CButton>
-      </>
-    ) : (
+    if (isStart)
+      return (
+        <>
+          <Countdown
+            onComplete={e => handleHetThoiGian(e.completed)}
+            className='doExam-main-counter'
+            date={Date.now() + 7200000}
+          />
+          <CButton
+            variant='outline'
+            color='danger'
+            size='lg'
+            className='intro-container-btn-start'
+            onClick={handleSubmit}>
+            Nộp bài
+          </CButton>
+        </>
+      );
+    return (
       <CButton
         variant='outline'
         color='success'
         size='lg'
         className='intro-container-btn-start'
-        onClick={() => setIsStart(true)}>
+        onClick={() => {
+          setIsStart(true);
+          onPlayAudio(true);
+        }}>
         Bắt đầu
       </CButton>
     );
-    return btn;
   };
   return <>{renderBtn(isStart)}</>;
 };
