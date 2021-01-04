@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { CLink } from '@coreui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getExamRequest } from '../../../Store/slice/examSlide';
+import { getExamRequest } from '../../../redux/slice/examSlide';
 import { useHistory } from 'react-router-dom';
 
 const Exam = props => {

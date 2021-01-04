@@ -1,29 +1,22 @@
 import { CCol, CRow, CButton } from '@coreui/react';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import rc from './LC.pdf';
 import Questions from './Questions';
-import { mdiConsoleLine, mdiTriangle } from '@mdi/js';
+import { mdiTriangle } from '@mdi/js';
 import Icon from '@mdi/react';
-import { mdiPause } from '@mdi/js';
 import audio from './TEST 01.mp3';
-import useSound from 'use-sound';
-import TimeSlider from 'react-input-slider';
 import Countdown from 'react-countdown';
 import { useDispatch, useSelector } from 'react-redux';
-import PlayerAudio, { useAudio } from '../../audio/PlayerAudio';
-import Axios from 'axios';
-import { axiosPost } from '../../../axios/axios';
-import axios from 'axios';
+import { useAudio } from '../../audio/PlayerAudio';
+import { submitExam, sendExam } from '../../../redux/slice/doExamSlice';
+import { LISTEN_SCORE_TOEIC, READING_SCORE_TOEIC } from '../examAnswerSheet';
 
 const DoExam = props => {
-  const [file, setFile] = useState();
-  let url;
-  // const url = rc;
-
-  const [isPlaying, toggle] = useAudio({ url: audio });
+  const url = rc;
+  const [isPlaying, toggle] = useAudio({ url: audio, isAutoPlay: true });
   // pdf
-
+  const [isStart, setIsStart] = useState(true);
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
@@ -52,7 +45,7 @@ const DoExam = props => {
         <CCol md='6' sm='12' className='exam'>
           <Document
             className='doExam-exam'
-            file={{ url: 'http://localhost:9999/pdf' }}
+            file={url}
             onLoadSuccess={onDocumentLoadSuccess}>
             <Page scale={1.2} pageNumber={pageNumber} height={800} />
 
@@ -97,7 +90,7 @@ const DoExam = props => {
           <div className='doExam-main-intro'>
             <h3>Mark your answer on your answer sheet</h3>
             <div>
-              <OClock onPlayAudio={toggle} />
+              <OClock onPlayAudio={toggle} onStart={{ isStart, setIsStart }} />
             </div>
           </div>
           <AnswerSheet />
@@ -153,23 +146,87 @@ const AnswerSheet = () => {
 };
 
 const OClock = props => {
-  const { onPlayAudio } = props;
-  const [isStart, setIsStart] = useState(false);
+  const { onPlayAudio, onStart } = props;
+  const { isStart, setIsStart } = onStart;
+  const dispatch = useDispatch();
+  const [timer, setTimer] = useState(Date.now());
   const examInfo = useSelector(state => state.doExam);
+  const [scoreResult, setScoreResult] = useState(null);
+  const { answerSheet, answerSheetTmp } = useSelector(state => state.doExam);
   const accountLogin = useSelector(state => state.authentication.loginState);
-  const { answerSheet } = examInfo;
   const { email } = accountLogin;
+  const { _examId } = examInfo;
+
+  const compareAnswer = (truthAnswerSheet, answerSheet) => {
+    if (!truthAnswerSheet || !answerSheet) return null;
+    const answerTrue = [];
+    const answerFalse = [];
+
+    answerSheet.forEach(e => {
+      const correctAnswer = truthAnswerSheet.find(cra => cra.stt === e.stt);
+      if (correctAnswer.dapAn === e.dapAn) answerTrue.push(e);
+      else answerFalse.push(e);
+    });
+    const test = calculatePart(answerTrue);
+    
+    return { answerTrue, answerFalse, answerByPart: test };
+  };
+
+  const calculatePart = answerTrue => {
+    let numberListen = 0;
+    let numberReading = 0;
+
+    answerTrue.forEach(e => {
+      if (e.stt <= 100) numberListen = numberListen + 1;
+      if (e.stt >= 100) numberReading = numberReading + 1;
+    });
+
+    return { numberListen, numberReading };
+  };
+
+  const caculateScore = (tableScore, number) => {
+    return tableScore.find(e => e.numberCorrect === number).score;
+  };
 
   const handleSubmit = async () => {
     setIsStart(false);
     onPlayAudio(false);
-    let examResult = {
+    const result = compareAnswer(answerSheet, answerSheetTmp);
+    if (result) {
+      const { answerByPart } = result;
+      const { numberListen, numberReading } = answerByPart;
+      const listenScore = caculateScore(LISTEN_SCORE_TOEIC, numberListen);
+      const readScore = caculateScore(READING_SCORE_TOEIC, numberReading);
+      const sumScore = listenScore + readScore;
+      const resultHTML = (
+        <div>
+          <div>Listening: {numberListen}/100 câu</div>
+          <div>Listening Score: {listenScore}</div>
+          <div>Reading part: {numberReading}/100 câu</div>
+          <div>Reading Score: {readScore}</div>
+          <h3>Tổng Điểm: {sumScore}/990</h3>
+        </div>
+      );
+      setScoreResult(resultHTML);
+      const modelSubmit = {
+        url: `http://localhost:9999/api/recordHistory/submit`,
+        _examId: _examId,
+        score: sumScore,
+        email: email
+      };
+      dispatch(sendExam(modelSubmit));
+    }
+
+    result && dispatch(submitExam(result));
+    /* let examResult = {
       email: email,
       answerSheet: answerSheet,
       url: 'http://localhost:9999/ketQuaBaiThi'
-    };
+    }; */
     // phd submit dethi
-    const res = await axiosPost(examResult);
+    // dispach dap an
+
+    //const res = await axiosPost(examResult);
   };
 
   const handleHetThoiGian = isCompleted => {
@@ -177,6 +234,7 @@ const OClock = props => {
       handleSubmit();
     }
   };
+
   const renderBtn = isStart => {
     if (isStart)
       return (
@@ -184,7 +242,7 @@ const OClock = props => {
           <Countdown
             onComplete={e => handleHetThoiGian(e.completed)}
             className='doExam-main-counter'
-            date={Date.now() + 7200000}
+            date={timer + 7200000}
           />
           <CButton
             variant='outline'
@@ -196,20 +254,9 @@ const OClock = props => {
           </CButton>
         </>
       );
-    return (
-      <CButton
-        variant='outline'
-        color='success'
-        size='lg'
-        className='intro-container-btn-start'
-        onClick={() => {
-          setIsStart(true);
-          onPlayAudio(true);
-        }}>
-        Bắt đầu
-      </CButton>
-    );
+    return <div>{scoreResult}</div>;
   };
+
   return <>{renderBtn(isStart)}</>;
 };
 export default DoExam;

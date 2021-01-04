@@ -5,7 +5,7 @@ import Icon from '@mdi/react';
 import {
   getExamRequest,
   getExamsRequest
-} from '../../../Store/slice/examSlide';
+} from '../../../redux/slice/examSlide';
 import { Link, Redirect } from 'react-router-dom';
 import Exam from './Exam';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,9 +19,9 @@ const MiniExams = () => {
     let cancelled = false;
     (async () => {
       const response = await Axios.get('http://localhost:9999/api/fullexam/');
-      if (!cancelled) {
-        // const { data } = response;
-        // setListExam(data);
+      if (!cancelled && response) {
+        /* const { data } = response;
+        setListExam(data); */
         setListMiniExam([
           { _id: '123456', title: 'Đề thi số 1' },
           { _id: '123456', title: 'Đề thi số 2' }

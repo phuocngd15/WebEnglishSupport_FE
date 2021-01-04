@@ -3,8 +3,9 @@ import Axios from 'axios';
 import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StatusMiddleWare } from '../../../../share/Alert';
+import { axiosGet, axiosPost } from '../../../../share/axios';
 import { getValueRef } from '../../../../share/func';
-import useEncrypt from '../../../hook/useEncrypt';
+import useEncrypt from '../../../../share/useEncrypt';
 
 const OneInput = props => {
   const email = useSelector(state => state.authentication.loginState.email);
@@ -27,22 +28,23 @@ const OneInput = props => {
 
   const handleSave = async () => {
     const model = {
+      url: apiPostURL,
       email: email,
       value: needEncrypt ? mahoa(getValueRef(inputRef)) : getValueRef(inputRef)
     };
-    const res = await Axios.post(apiPostURL, model);
+    const res = await axiosPost(model);
     StatusMiddleWare(res.status, res.data) && setIsEditing(false);
   };
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const response = await Axios.get(apiGetURL, {
-        params: {
-          email
-        }
-      });
-      if (!cancelled) {
+      const model = {
+        url: apiGetURL,
+        email
+      };
+      const response = await axiosGet(model);
+      if (!cancelled && response) {
         const { data } = response;
         setValue(data[keyQuery]);
       }

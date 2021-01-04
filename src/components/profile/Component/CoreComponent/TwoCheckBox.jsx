@@ -11,7 +11,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StatusMiddleWare } from '../../../../share/Alert';
 import { getValueRef } from '../../../../share/func';
-import useEncrypt from '../../../hook/useEncrypt';
+import useEncrypt from '../../../../share/useEncrypt';
 
 const TwoCheckBox = props => {
   const email = useSelector(state => state.authentication.loginState.email);
@@ -54,7 +54,7 @@ const TwoCheckBox = props => {
           email
         }
       });
-      if (!cancelled) {
+      if (!cancelled && response) {
         const { data } = response;
         setValue(data[keyQuery]);
       }
@@ -106,7 +106,7 @@ const TwoCheckBox = props => {
           <CSelect custom name='ccmonth' id='profile-gender'>
             <option value='Nữ'>Nữ</option>
             <option value='Nam'>Nam</option>
-            <option value='Không công khai'>Không công khai</option>
+            <option value='Bỏ trống'>Bỏ trống</option>
           </CSelect>
         </CFormGroup>
       );
