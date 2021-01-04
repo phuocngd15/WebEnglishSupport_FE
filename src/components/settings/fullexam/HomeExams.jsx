@@ -28,7 +28,6 @@ const HomeExams = () => {
               className='fullTest-image'
             />
           </CCol>
-          <h3>múa lửa</h3>
         </CRow>
       </div>
     </div>

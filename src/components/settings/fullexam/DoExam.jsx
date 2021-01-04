@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import rc from './LC.pdf';
 import Questions from './Questions';
-import { mdiTriangle } from '@mdi/js';
+import { mdiConsoleLine, mdiTriangle } from '@mdi/js';
 import Icon from '@mdi/react';
 import { mdiPause } from '@mdi/js';
 import audio from './TEST 01.mp3';
@@ -14,8 +14,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import PlayerAudio, { useAudio } from '../../audio/PlayerAudio';
 import Axios from 'axios';
 import { axiosPost } from '../../../axios/axios';
+import axios from 'axios';
+
 const DoExam = props => {
-  const url = rc;
+  const [file, setFile] = useState();
+  let url;
+  // const url = rc;
+
   const [isPlaying, toggle] = useAudio({ url: audio });
   // pdf
 
@@ -47,7 +52,7 @@ const DoExam = props => {
         <CCol md='6' sm='12' className='exam'>
           <Document
             className='doExam-exam'
-            file={url}
+            file={{ url: 'http://localhost:9999/pdf' }}
             onLoadSuccess={onDocumentLoadSuccess}>
             <Page scale={1.2} pageNumber={pageNumber} height={800} />
 
@@ -155,7 +160,6 @@ const OClock = props => {
   const { answerSheet } = examInfo;
   const { email } = accountLogin;
 
-
   const handleSubmit = async () => {
     setIsStart(false);
     onPlayAudio(false);
@@ -167,7 +171,7 @@ const OClock = props => {
     // phd submit dethi
     const res = await axiosPost(examResult);
   };
-  
+
   const handleHetThoiGian = isCompleted => {
     if (isCompleted) {
       handleSubmit();
