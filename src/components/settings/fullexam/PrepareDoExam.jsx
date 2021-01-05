@@ -16,7 +16,7 @@ const PrepareDoExam = () => {
   console.log(prepareDoExam);
   const dispatch = useDispatch();
   //old
-  useEffect(() => {
+ /*  useEffect(() => {
     let cancelled = false;
     (async () => {
       const reqModel = {
@@ -28,7 +28,7 @@ const PrepareDoExam = () => {
     return () => {
       cancelled = true;
     };
-  }, [dispatch, id]);
+  }, [dispatch, id]); */
 
   if (prepareDoExam.loading) {
     const override = css`

@@ -18,11 +18,12 @@ import { LISTEN_SCORE_TOEIC, READING_SCORE_TOEIC } from '../examAnswerSheet';
 
 const DoExam = props => {
   const [file, setFile] = useState();
-  const url = 'http://localhost:9999/pdf/';
+  const url = 'http://localhost:9999/api/uploadFile/getOne/1W9_KTz9S9Vk65PCuW8vneZQkuUbP3iAC';
   // const url = rc;
 
   const [isPlaying, toggle] = useAudio({
-    url: `http://localhost:9999/exam/audio`
+    url: `http://localhost:9999/api/uploadFile/getOne/1wrbAeA27oBQi-_3116_evqngJNTQMtTY`,
+    isAutoPlay: true
   });
   // pdf
   const [isStart, setIsStart] = useState(true);
@@ -177,7 +178,7 @@ const OClock = props => {
       else answerFalse.push(e);
     });
     const test = calculatePart(answerTrue);
-    
+
     return { answerTrue, answerFalse, answerByPart: test };
   };
 

@@ -95,14 +95,14 @@ const Question = props => {
     return answerHTML;
   };
 
-  if (!answerSheet)
+/*   if (!answerSheet)
     return (
       <>
         <div>
           <span className='answer-row'></span>
         </div>
       </>
-    );
+    ); */
   return (
     <>
       <div>
