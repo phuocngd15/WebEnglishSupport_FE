@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './scss/style.scss';
-import Recover from './views/pages/recover/recover';
+import Recover from './views/recover/recover';
 const loading = (
   <div className='pt-3 text-center'>
     <div className='sk-spinner sk-spinner-pulse'></div>
@@ -10,16 +10,16 @@ const loading = (
 );
 
 // Containers
-const TheLayout = React.lazy(() => import('./containers/TheLayout'));
+const TheLayout = React.lazy(() => import('./views/baseView/TheLayout'));
 
 // Pages
-const Login = React.lazy(() => import('./views/pages/login/Login'));
+const Login = React.lazy(() => import('./views/login/Login'));
 const PageIntro = React.lazy(() =>
-  import('./views/pages/introduction/IntroductionPage')
+  import('./views/introduction/IntroductionPage')
 );
-const Register = React.lazy(() => import('./views/pages/register/Register'));
-const Page404 = React.lazy(() => import('./views/pages/page404/Page404'));
-const Page500 = React.lazy(() => import('./views/pages/page500/Page500'));
+const Register = React.lazy(() => import('./views/register/Register'));
+const Page404 = React.lazy(() => import('./views/page404/Page404'));
+const Page500 = React.lazy(() => import('./views/page500/Page500'));
 
 const App = () => {
   const isLogin = useSelector(state => state.authentication.isLogin);

@@ -12,6 +12,9 @@ const StatusMiddleWare = (status, data) => {
     case 201:
       infoMessage && Swal.fire('', infoMessage, type);
       return isContinue;
+   /*  case 204:
+      infoMessage && Swal.fire('', infoMessage, type);
+      return isContinue; */
     case 404:
       Swal.fire('', infoMessage, 'error');
       return false;

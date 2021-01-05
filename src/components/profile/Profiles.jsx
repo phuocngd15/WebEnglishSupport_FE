@@ -17,7 +17,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import useEncrypt from '../hook/useEncrypt';
 import axios from 'axios';
 import { useEffect } from 'react/cjs/react.development';
-import { getProfile, axiosGet } from '../../axios/axios';
 
 const Profiles = () => {
   const [encrypt, giaima] = useEncrypt();
@@ -35,9 +34,8 @@ const Profiles = () => {
     };
 
     fetchData();
-  }, [success]);
-  const fullname  = giaima(profile.fullname);
-console.log(fullname)
+  }, [emailEncrypted, success]);
+  const fullname = giaima(profile.fullname);
   return (
     <div>
       <CContainer className='edit-`profile-content'>

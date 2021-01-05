@@ -5,7 +5,7 @@ import Icon from '@mdi/react';
 import {
   getExamRequest,
   getExamsRequest
-} from '../../../Store/slice/examSlide';
+} from '../../../redux/slice/examSlide';
 import { Link, Redirect } from 'react-router-dom';
 import Exam from './Exam';
 import { useDispatch, useSelector } from 'react-redux';
