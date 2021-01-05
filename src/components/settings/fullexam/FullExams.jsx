@@ -20,13 +20,8 @@ const FullExams = () => {
     (async () => {
       const response = await Axios.get('http://localhost:9999/api/fullexam/');
       if (!cancelled) {
-        // const { data } = response;
-        // setListExam(data);
-        setListFullExam([
-          { _id: '123456', title: 'Đề thi số 1' },
-          { _id: '123456', title: 'Đề thi số 2' },
-          { _id: '123456', title: 'Đề thi số 3' }
-        ]);
+        const { data } = response;
+        setListFullExam(data);
       }
     })();
     return () => {

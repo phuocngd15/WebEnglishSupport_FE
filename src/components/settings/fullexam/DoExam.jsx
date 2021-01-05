@@ -6,7 +6,7 @@ import Questions from './Questions';
 import { mdiConsoleLine, mdiTriangle } from '@mdi/js';
 import Icon from '@mdi/react';
 import { mdiPause } from '@mdi/js';
-import audio from './TEST 01.mp3';
+// import audio from './TEST 01.mp3';
 import useSound from 'use-sound';
 import TimeSlider from 'react-input-slider';
 import Countdown from 'react-countdown';
@@ -18,10 +18,12 @@ import axios from 'axios';
 
 const DoExam = props => {
   const [file, setFile] = useState();
-  let url;
+  const url = 'http://localhost:9999/pdf/5ff3c000a7d5731e3c13b794';
   // const url = rc;
 
-  const [isPlaying, toggle] = useAudio({ url: audio });
+  const [isPlaying, toggle] = useAudio({
+    url: `http://localhost:9999/exam/TEST01.mp3`
+  });
   // pdf
 
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -52,7 +54,7 @@ const DoExam = props => {
         <CCol md='6' sm='12' className='exam'>
           <Document
             className='doExam-exam'
-            file={{ url: 'http://localhost:9999/pdf' }}
+            file={url}
             onLoadSuccess={onDocumentLoadSuccess}>
             <Page scale={1.2} pageNumber={pageNumber} height={800} />
 

@@ -18,14 +18,12 @@ const MiniExams = () => {
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const response = await Axios.get('http://localhost:9999/api/fullexam/');
+      const response = await Axios.get('http://localhost:9999/api/exam/');
       if (!cancelled) {
-        // const { data } = response;
-        // setListExam(data);
-        setListMiniExam([
-          { _id: '123456', title: 'Đề thi số 1' },
-          { _id: '123456', title: 'Đề thi số 2' }
-        ]);
+        const { data } = response;
+        console.log(data)
+        setListMiniExam(data);
+
       }
     })();
     return () => {
@@ -56,7 +54,7 @@ const MiniExams = () => {
           <CRow className='fullTest-exams-list'>
             <CCol lg='4' className='fullTest-exams-list-child'>
               {listMiniExam.map(exam => (
-                <Exam _id={exam._id} title={exam.title} />
+                <Exam _id={exam._id} title={exam.title} type={exam.type} />
               ))}
             </CCol>
           </CRow>

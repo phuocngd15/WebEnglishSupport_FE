@@ -5,14 +5,14 @@ import { getExamRequest } from '../../../Store/slice/examSlide';
 import { useHistory } from 'react-router-dom';
 
 const Exam = props => {
-  const { _id, title } = props;
+  const { _id, title, type } = props;
   return (
     <div className='container'>
       <tr className='exam-page'>
         <td>
           <li>
             <CLink to={'/BauDauThi/' + _id} key={_id}>
-              {title}
+              {title} {type}
             </CLink>
           </li>
         </td>
