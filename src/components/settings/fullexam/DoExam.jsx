@@ -18,11 +18,11 @@ import { LISTEN_SCORE_TOEIC, READING_SCORE_TOEIC } from '../examAnswerSheet';
 
 const DoExam = props => {
   const [file, setFile] = useState();
-  const url = 'http://localhost:9999/pdf/5ff3c000a7d5731e3c13b794';
+  const url = 'http://localhost:9999/pdf/';
   // const url = rc;
 
   const [isPlaying, toggle] = useAudio({
-    url: `http://localhost:9999/exam/TEST01.mp3`
+    url: `http://localhost:9999/exam/audio`
   });
   // pdf
   const [isStart, setIsStart] = useState(true);
