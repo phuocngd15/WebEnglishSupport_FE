@@ -19,7 +19,7 @@ const FullExams = () => {
     let cancelled = false;
     (async () => {
       const reqModel = {
-        url: 'http://localhost:9999/api/Fullexam/'
+        url: 'http://localhost:9999/api/fullexam/'
       };
       const response = await axiosGet(reqModel);
       if (!cancelled && response) {
