@@ -18,10 +18,12 @@ import { LISTEN_SCORE_TOEIC, READING_SCORE_TOEIC } from '../examAnswerSheet';
 
 const DoExam = props => {
   const [file, setFile] = useState();
-  const url = 'http://localhost:9999/api/gg/getOne/1W9_KTz9S9Vk65PCuW8vneZQkuUbP3iAC';
-
+  const url =
+    'http://localhost:9999/api/gg/getOne/17R-pfSN8PNx8c185efLN-QXEdQL8rtdm';
+  // const url = 'http://localhost:9999/api/pdf';
   const [isPlaying, toggle] = useAudio({
     url: `http://localhost:9999/api/gg/getOne/1wrbAeA27oBQi-_3116_evqngJNTQMtTY`,
+    // url: `http://localhost:9999/api/audio`,
     isAutoPlay: true
   });
   // pdf

@@ -20,7 +20,7 @@ const PrepareDoExam = () => {
     let cancelled = false;
     (async () => {
       const reqModel = {
-        url: `http://localhost:9999/api/fullExam/info`,
+        url: `http://localhost:9999/api/fullExam/ggClound/info`,
         id: id
       };
       dispatch(getExam(reqModel));
