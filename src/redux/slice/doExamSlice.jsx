@@ -2,7 +2,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import Axios from 'axios';
 import { cloneDeep } from 'lodash';
 import fs from 'fs';
-import { FULL_TEST_ANSWER_SHEET } from '../../components/settings/examAnswerSheet';
+import {
+  FULL_TEST_ANSWER_SHEET,
+  FULL_TEST_ANSWER_SHEET_HAS
+} from '../../components/settings/examAnswerSheet';
 import { axiosGet, axiosPost } from '../../share/axios';
 
 const getGGExam = createAsyncThunk('exam/listExam', async model => {
@@ -82,7 +85,7 @@ const doExamSlice = createSlice({
     },
     [getExam.fulfilled]: (state, action) => {
       const { _id, answerSheet, title } = action.payload.data;
-      state.answerSheet = answerSheet;
+      state.answerSheet = FULL_TEST_ANSWER_SHEET_HAS;
       state._examId = _id;
       state.loading = false;
       state.isSumited = false;

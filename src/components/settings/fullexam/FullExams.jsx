@@ -25,6 +25,7 @@ const FullExams = () => {
       if (!cancelled && response) {
         const { data } = response;
         if (data) setListFullExam(data);
+        console.log(data);
       }
     })();
     return () => {

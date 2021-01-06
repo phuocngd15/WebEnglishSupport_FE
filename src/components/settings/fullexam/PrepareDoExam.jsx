@@ -16,11 +16,11 @@ const PrepareDoExam = () => {
   console.log(prepareDoExam);
   const dispatch = useDispatch();
   //old
- /*  useEffect(() => {
+  useEffect(() => {
     let cancelled = false;
     (async () => {
       const reqModel = {
-        url: `http://localhost:9999/api/Fullexam/info`,
+        url: `http://localhost:9999/api/fullExam/info`,
         id: id
       };
       dispatch(getExam(reqModel));
@@ -28,7 +28,7 @@ const PrepareDoExam = () => {
     return () => {
       cancelled = true;
     };
-  }, [dispatch, id]); */
+  }, [dispatch, id]);
 
   if (prepareDoExam.loading) {
     const override = css`

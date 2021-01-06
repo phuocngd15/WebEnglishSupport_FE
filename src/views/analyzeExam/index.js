@@ -46,7 +46,6 @@ const AnalyzeExam = () => {
       dateTime: filter
     };
     const res = await axiosGet(analyzeModel);
-    console.log(res.data);
     return res.data;
   };
   /* useEffect(() => {
@@ -68,26 +67,13 @@ const AnalyzeExam = () => {
     };
   }, [email, filter, sumScore]); */
 
-  const dataMockColumnChar = () => {
-    const result = [];
-    let count = 1;
-    while (count < 28) {
-      const doOrNot = Math.floor(Math.random() * 1 + 1);
-      const doTimes = Math.floor(Math.random() * 10) + 1;
-      doOrNot && result.push(doTimes);
-      count = count + 1;
-    }
-    return result;
-  };
-
   const changeAnalyzeTimes = async (month, year) => {
     const { labelDate, values } = await queryData();
-    console.log(data);
     const columnChar = {
       labels: labelDate,
       datasets: [
         {
-          label: 'Số lần làm bài',
+          label: 'Điểm trung bình',
           backgroundColor: 'rgba(255,99,132,0.2)',
           borderColor: 'rgba(255,99,132,1)',
           borderWidth: 1,
@@ -121,7 +107,7 @@ const AnalyzeExam = () => {
         }
       ]
     };
-    console.log(columnChar);
+    console.log('columnChar', columnChar);
 
     return {
       pieReadChar,
@@ -131,15 +117,14 @@ const AnalyzeExam = () => {
     };
   };
 
-  const handleChange = filter => {
+  const handleChange = async filter => {
     setfilter(filter);
-    console.log(filter);
     const {
       pieReadChar,
       pieLisChar,
       columnChar,
       sumScore
-    } = changeAnalyzeTimes(filter.getMonth() + 1, filter.getYear());
+    } = await changeAnalyzeTimes(filter.getMonth() + 1, filter.getYear());
     setSumScore(sumScore);
     setDataColumnChart(columnChar);
     setDataPieChartListening(pieLisChar);
@@ -152,25 +137,7 @@ const AnalyzeExam = () => {
         <h3>Filer: </h3>
         <DayPickerInput onDayChange={handleChange} />
       </div>
-      {filter && (
-        <div className='analyze-score'>
-          <div className='title'>
-            Bài đạt điểm cao nhất:
-            <span className='highlight'>{sumScore}/990</span>
-            {/* (12/12/2020 14h20) */}
-          </div>
-          <div className='graph'>
-            <Doughnut height='100' width='1100' data={dataPieChartListening} />
-            <div className='listen-score'>
-              <div>450/495 Listen</div>
-            </div>
-            <Doughnut height='100' width='1100' data={dataPieChartReading} />
-            <div className='reading-score'>
-              <div>300/495 Read</div>
-            </div>
-          </div>
-        </div>
-      )}
+
       {dataColumnChart && (
         <div className='analyze-times'>
           <div className='title'>
@@ -188,5 +155,6 @@ const AnalyzeExam = () => {
     </div>
   );
 };
+
 
 export default AnalyzeExam;
